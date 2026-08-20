@@ -3,23 +3,20 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>INFINITY DRIP by Bocar</title>
+<title>INFINITY DRIP by Bocar</title> <!-- TITRE CORRIGE -->
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800;900&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Outfit', sans-serif}
 body{background:#F5F5F5;padding-bottom:110px}
-
-.top-header{position:sticky;top:0;background:#fff;padding:12px 16px;display:flex;justify-content:space-between;align-items:center;z-index:99;box-shadow:0 2px 8px rgba(0,0,0,0.05);border-radius:0 0 16px 16px}
+.header{background:#fff;padding:12px 16px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;box-shadow:0 2px 8px rgba(0,0,0,0.05);border-radius:0 0 16px 16px;z-index:99}
 .logo-box{display:flex;align-items:center;gap:10px}
 .logo{background:#E8DCC8;color:#000;width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:13px;font-family:'Montserrat', sans-serif}
 .header-text b{font-family:'Montserrat', sans-serif;font-weight:800;font-size:16px;color:#000}
-.header-text small{color:#C49B5A;font-weight:600;font-size:12px}
 .cart-icon{font-size:18px;font-weight:800;color:#000;position:relative;cursor:pointer}
 .cart-count{position:absolute;top:-6px;right:-8px;background:#25D366;color:#fff;border-radius:50%;width:18px;height:18px;font-size:10px;display:flex;align-items:center;justify-content:center;font-weight:900}
-
 .banner{background:#000;padding:40px 20px;text-align:center;color:#fff}
+.banner small{color:#C49B5A;letter-spacing:2px;font-size:11px;font-weight:700} /* AJOUT */
 .banner h1{font-family:'Montserrat', sans-serif;font-weight:900;font-size:24px;text-transform:uppercase}
-
 .container{padding:16px 12px;max-width:650px;margin:0 auto}
 .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
 .card{background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,0.06)}
@@ -27,12 +24,10 @@ body{background:#F5F5F5;padding-bottom:110px}
 .card-body{padding:12px 14px}
 .name{font-weight:800;font-size:15px;margin-bottom:5px;font-family:'Montserrat', sans-serif;color:#000}
 .price{color:#C49B5A;font-size:16px;font-weight:800;margin-bottom:10px}
-.btn-cart{width:100%;background:#D4B896;color:#000;border:none;padding:12px;border-radius:12px;font-weight:800;font-size:14px;font-family:'Montserrat', sans-serif}
-
+.btn-cart{width:100%;background:#D4B896;color:#000;border:none;padding:12px;border-radius:12px;font-weight:800;font-size:14px;font-family:'Montserrat', sans-serif;cursor:pointer}
 .btn-finaliser{position:fixed;bottom:40px;left:0;right:0;background:#25D366;color:#fff;padding:16px;display:flex;align-items:center;justify-content:center;gap:8px;z-index:200;font-weight:900;font-size:16px;font-family:'Montserrat', sans-serif;cursor:pointer}
-.site-link{position:fixed;bottom:8px;left:50%;transform:translateX(-50%);background:#1A5F2A;color:#fff;padding:8px 16px;border-radius:20px;font-size:12px;z-index:200;font-weight:600}
 
-/* PANIER POPUP STYLE CHINA-MALI */
+/* PANIER POPUP */
 #popupFinaliser{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:#fff;z-index:1000;overflow-y:auto}
 .popup-header{padding:20px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #E5E5E5}
 .popup-header h2{font-family:'Montserrat', sans-serif;font-weight:900;font-size:20px;color:#000}
@@ -51,29 +46,30 @@ body{background:#F5F5F5;padding-bottom:110px}
 .resume-row{display:flex;justify-content:space-between;margin-bottom:10px;font-size:15px}
 .resume-row.total{font-weight:900;font-size:18px;margin-top:10px}
 .resume-row.total span{color:#C49B5A}
-.btn-commander{width:100%;background:#D4B896;color:#000;border:none;padding:16px;border-radius:14px;font-size:17px;font-weight:900;font-family:'Montserrat', sans-serif;margin:15px 0}
-.btn-vide{width:100%;background:#fff;color:#000;border:1px solid #E5E5E5;padding:12px;border-radius:14px;font-size:15px;font-weight:700}
+.btn-commander{width:100%;background:#25D366;color:#fff;border:none;padding:16px;border-radius:14px;font-size:17px;font-weight:900;font-family:'Montserrat', sans-serif;margin:15px 0;cursor:pointer}
+.btn-vide{width:100%;background:#fff;color:#000;border:1px solid #E5E5E5;padding:12px;border-radius:14px;font-size:15px;font-weight:700;cursor:pointer}
 </style>
 </head>
 <body>
 
-<div class="top-header">
+<div class="header">
   <div class="logo-box">
     <div class="logo">IDS</div>
-    <div class="header-text"><b>INFINITY DRIP</b><br><small>by Bocar</small></div>
+    <div class="header-text"><b>INFINITY DRIP</b><br><small style="color:#C49B5A;font-size:12px">by Bocar</small></div> <!-- CORRIGE -->
   </div>
   <div class="cart-icon" onclick="ouvrirPanier()">🛒<div class="cart-count" id="compteurHeader">0</div></div>
 </div>
 
-<div class="banner"><h1>PREMIUM QUALITÉ</h1></div>
+<div class="banner">
+  <small>INFINITY DRIP</small> <!-- CORRIGE ICI -->
+  <h1>BY BOCAR<br>MAILLOTS PREMIUM</h1> <!-- CORRIGE ICI -->
+</div>
 <div class="container"><div class="grid" id="produits"></div></div>
 
 <div class="btn-finaliser" onclick="ouvrirPanier()">
   <span>●</span> Finaliser - <span id="total">0</span> FCFA
 </div>
-<div class="site-link">boubacaryarra2-collab.github.io</div>
 
-<!-- POPUP PANIER -->
 <div id="popupFinaliser">
   <div class="popup-header">
     <h2>Votre panier</h2>
@@ -82,7 +78,7 @@ body{background:#F5F5F5;padding-bottom:110px}
   <div class="panier-content" id="panierItems"></div>
   <div class="resume">
     <div class="resume-row"><span>Sous-total</span><span id="sousTotal">0 FCFA</span></div>
-    <div class="resume-row"><span>Livraison</span><span style="color:#059669;font-weight:700">Gratuite</span></div>
+    <div class="resume-row"><span>Livraison</span><span id="livraison">1 000 FCFA</span></div>
     <hr style="margin:10px 0;border:none;border-top:1px solid #E5E5E5">
     <div class="resume-row total"><span>Total</span><span id="totalPopup">0 FCFA</span></div>
     <button class="btn-commander" onclick="validerCommande()">Commander tout</button>
@@ -92,23 +88,26 @@ body{background:#F5F5F5;padding-bottom:110px}
 
 <script>
 let panier=[];
+const PRIX_LIVRAISON = 1000;
+
 const produits = [
   {nom:"Bayern Edition", prix:7000, img:"IMG_2840.jpeg"},
-  {nom:"PSG Exterieur", prix:7000, img:"IMG_2844.jpeg"},
-  {nom:"Man United 3eme", prix:7000, img:"IMG_2843.jpeg"},
-  {nom:"Arsenal Domicile", prix:7000, img:"IMG_2837.jpeg"},
+  {nom:"real madrid , prix:7000, img:"IMG_2844.jpeg"},
+  {nom:"arsenal , prix:7000, img:"IMG_2843.jpeg"},
+  {nom:"manchester united , prix:7000, img:"IMG_2837.jpeg"},
   {nom:"Liverpool Exterieur", prix:7000, img:"IMG_2836.jpeg"},
   {nom:"Man United Domicile", prix:7000, img:"IMG_2835.jpeg"},
-  {nom:"Bayern Domicile", prix:7000, img:"IMG_2834.jpeg"},
-  {nom:"Barça Domicile", prix:7000, img:"IMG_2833.jpeg"},
-  {nom:"Real Madrid Domicile", prix:7000, img:"IMG_2832.jpeg"},
-  {nom:"OM Exterieur", prix:7000, img:"IMG_2841.jpeg"}
+  {nom:", prix:7000, img:"IMG_2834.jpeg"},
+  {nom:"Baryern domicile,,, prix:7000, img:"IMG_2833.jpeg"},
+  {nom:"Ac milian,,prix:7000, img:"IMG_2832.jpeg"},
+  {nom:"psg maillot ,,prix:7000, img:"IMG_2841.jpeg"}
 ];
+
 function afficherProduits(){
   let html='';
   produits.forEach(p=>{
     html+=`<div class="card">
-      <img src="${p.img}">
+      <img src="${p.img}" onerror="this.src='https://via.placeholder.com/190'">
       <div class="card-body">
         <div class="name">${p.nom}</div>
         <div class="price">${p.prix.toLocaleString()} FCFA</div>
@@ -116,79 +115,4 @@ function afficherProduits(){
       </div>
     </div>`;
   });
-  document.getElementById('produits').innerHTML=html;
-}
-afficherProduits();
-
-function ajouter(nom,prix,img){
-  let exist = panier.find(i=>i.nom==nom);
-  if(exist){exist.qte++;}
-  else{panier.push({nom,prix,img,qte:1});}
-  majCompteur();
-}
-function majCompteur(){
-  let totalQte = panier.reduce((s,i)=>s+i.qte,0);
-  let totalPrix = panier.reduce((s,i)=>s+i.prix*i.qte,0);
-  document.getElementById('compteurHeader').innerText=totalQte;
-  document.getElementById('total').innerText=totalPrix.toLocaleString();
-}
-
-function ouvrirPanier(){
-  document.getElementById('popupFinaliser').style.display='block';
-  majPanier();
-}
-function fermerPanier(){document.getElementById('popupFinaliser').style.display='none';}
-
-function majPanier(){
-  let html='';
-  let total=0;
-  panier.forEach((item,idx)=>{
-    html+=`<div class="panier-item">
-      <img src="${item.img}">
-      <div class="panier-info">
-        <div class="panier-nom">${item.nom}</div>
-        <div class="panier-prix">${item.prix.toLocaleString()} FCFA</div>
-        <div class="qte-controls">
-          <div class="qte-btn" onclick="changerQte(${idx},-1)">-</div>
-          <div class="qte-num">${item.qte}</div>
-          <div class="qte-btn" onclick="changerQte(${idx},1)">+</div>
-        </div>
-      </div>
-      <div class="delete-btn" onclick="supprimer(${idx})">×</div>
-    </div>`;
-    total+=item.prix*item.qte;
-  });
-  document.getElementById('panierItems').innerHTML=html || '<p style="text-align:center;padding:40px;color:#999">Votre panier est vide</p>';
-  document.getElementById('sousTotal').innerText=total.toLocaleString()+' FCFA';
-  document.getElementById('totalPopup').innerText=total.toLocaleString()+' FCFA';
-}
-function changerQte(index,change){
-  panier[index].qte+=change;
-  if(panier[index].qte<=0){panier.splice(index,1);}
-  majCompteur(); majPanier();
-}
-function supprimer(index){
-  panier.splice(index,1);
-  majCompteur(); majPanier();
-}
-function viderPanier(){
-  panier=[]; majCompteur(); majPanier();
-}
-
-function validerCommande(){
-  if(panier.length==0){alert("Panier vide");return;}
-  let nom=prompt("Ton nom:");
-  let tel=prompt("Ton téléphone:");
-  let adresse=prompt("Adresse de livraison:");
-  if(!nom||!tel){alert("Remplis nom et téléphone");return;}
-  let total=panier.reduce((s,i)=>s+i.prix*i.qte,0);
-  let msg="🔥 COMMANDE INFINITY DRIP by Bocar 🔥%0A%0A";
-  panier.forEach((i,idx)=>{msg+=(idx+1)+". "+i.nom+" x"+i.qte+" - "+(i.prix*i.qte).toLocaleString()+" FCFA%0A";});
-  msg+="TOTAL : "+total.toLocaleString()+" FCFA%0A%0A";
-  msg+="Nom: "+nom+"%0ATel: "+tel+"%0AAdresse: "+adresse;
-  window.open("https://wa.me/22372039675?text="+msg,'_blank');
-  viderPanier(); fermerPanier();
-}
-</script>
-</body>
-</html>
+  document.getElementById('produits').innerHTML=html
