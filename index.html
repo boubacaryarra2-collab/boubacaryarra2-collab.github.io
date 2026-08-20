@@ -7,44 +7,52 @@
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800;900&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Outfit', sans-serif}
-body{background:#F5F5F5;padding-bottom:110px} /* FOND GRIS CLAIR */
+body{background:#F5F5F5;padding-bottom:110px}
 
 .top-header{position:sticky;top:0;background:#fff;padding:12px 16px;display:flex;justify-content:space-between;align-items:center;z-index:99;box-shadow:0 2px 8px rgba(0,0,0,0.05);border-radius:0 0 16px 16px}
 .logo-box{display:flex;align-items:center;gap:10px}
 .logo{background:#E8DCC8;color:#000;width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:13px;font-family:'Montserrat', sans-serif}
 .header-text b{font-family:'Montserrat', sans-serif;font-weight:800;font-size:16px;color:#000}
 .header-text small{color:#C49B5A;font-weight:600;font-size:12px}
-.cart-icon{font-size:18px;font-weight:800;color:#000}
+.cart-icon{font-size:18px;font-weight:800;color:#000;position:relative;cursor:pointer}
+.cart-count{position:absolute;top:-6px;right:-8px;background:#25D366;color:#fff;border-radius:50%;width:18px;height:18px;font-size:10px;display:flex;align-items:center;justify-content:center;font-weight:900}
 
 .banner{background:#000;padding:40px 20px;text-align:center;color:#fff}
 .banner h1{font-family:'Montserrat', sans-serif;font-weight:900;font-size:24px;text-transform:uppercase}
 
 .container{padding:16px 12px;max-width:650px;margin:0 auto}
 .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
-.card{background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,0.06)} /* CARD BLANCHE */
+.card{background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,0.06)}
 .card img{width:100%;height:190px;object-fit:cover;border-radius:16px 16px 0 0}
 .card-body{padding:12px 14px}
 .name{font-weight:800;font-size:15px;margin-bottom:5px;font-family:'Montserrat', sans-serif;color:#000}
-.price{color:#C49B5A;font-size:16px;font-weight:800;margin-bottom:10px} /* PRIX BEIGE */
-.btn-cart{width:100%;background:#D4B896;color:#000;border:none;padding:12px;border-radius:12px;font-weight:800;font-size:14px;font-family:'Montserrat', sans-serif} /* BOUTON BEIGE */
-.btn-cart:active{background:#C49B5A;transform:scale(0.97)}
+.price{color:#C49B5A;font-size:16px;font-weight:800;margin-bottom:10px}
+.btn-cart{width:100%;background:#D4B896;color:#000;border:none;padding:12px;border-radius:12px;font-weight:800;font-size:14px;font-family:'Montserrat', sans-serif}
 
-.btn-finaliser{position:fixed;bottom:40px;left:0;right:0;background:#25D366;color:#fff;padding:16px;display:flex;align-items:center;justify-content:center;gap:8px;z-index:200;font-weight:900;font-size:16px;font-family:'Montserrat', sans-serif}
-.btn-finaliser .dot{width:10px;height:10px;background:#fff;border-radius:50%}
-.badge{ background:#fff;color:#25D366;border-radius:50%;width:22px;height:22px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:900;margin-left:4px}
-
+.btn-finaliser{position:fixed;bottom:40px;left:0;right:0;background:#25D366;color:#fff;padding:16px;display:flex;align-items:center;justify-content:center;gap:8px;z-index:200;font-weight:900;font-size:16px;font-family:'Montserrat', sans-serif;cursor:pointer}
 .site-link{position:fixed;bottom:8px;left:50%;transform:translateX(-50%);background:#1A5F2A;color:#fff;padding:8px 16px;border-radius:20px;font-size:12px;z-index:200;font-weight:600}
 
-#popupFinaliser{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.6);z-index:1000;overflow-y:auto}
-.popup-content{background:#fff;max-width:420px;margin:60px auto;padding:20px;border-radius:20px;color:#000}
-.popup-content h2{font-family:'Montserrat', sans-serif;font-weight:900;font-size:22px;margin-bottom:15px;color:#000}
-.panier-item{display:flex;gap:12px;padding:12px;background:#F9F9F9;border-radius:12px;margin-bottom:10px}
-.panier-item img{width:60px;height:60px;border-radius:10px;object-fit:cover}
-.panier-prix{font-weight:700;font-size:15px;color:#C49B5A;margin-left:auto}
-.total{font-weight:800;font-size:18px;color:#C49B5A;text-align:right;margin:15px 0}
-.popup-content input{background:#F9F9F9;border:1px solid #E5E5E5;color:#000;width:100%;padding:14px;border-radius:10px;font-size:14px;margin:6px 0 12px}
-.btn-payer{width:100%;background:#25D366;color:#fff;padding:16px;border:none;border-radius:12px;font-size:17px;font-weight:900;font-family:'Montserrat', sans-serif;margin-top:10px}
-.btn-fermer{width:100%;background:#F3F3F3;color:#000;padding:12px;border:none;border-radius:12px;margin-top:8px;font-weight:700}
+/* PANIER POPUP STYLE CHINA-MALI */
+#popupFinaliser{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:#fff;z-index:1000;overflow-y:auto}
+.popup-header{padding:20px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #E5E5E5}
+.popup-header h2{font-family:'Montserrat', sans-serif;font-weight:900;font-size:20px;color:#000}
+.close-btn{width:32px;height:32px;border-radius:50%;background:#F3F3F3;display:flex;align-items:center;justify-content:center;font-size:20px;cursor:pointer;border:none}
+.panier-content{padding:16px}
+.panier-item{display:flex;gap:12px;padding:14px;background:#FDF8F3;border-radius:14px;margin-bottom:12px;border:1px solid #F0E5D8}
+.panier-item img{width:70px;height:70px;border-radius:10px;object-fit:cover}
+.panier-info{flex:1}
+.panier-nom{font-weight:700;font-size:15px;color:#000;margin-bottom:4px}
+.panier-prix{color:#C49B5A;font-weight:700;font-size:14px}
+.qte-controls{display:flex;align-items:center;gap:8px;margin-top:8px}
+.qte-btn{width:28px;height:28px;border-radius:50%;background:#fff;border:1px solid #E5E5E5;display:flex;align-items:center;justify-content:center;font-weight:800;cursor:pointer}
+.qte-num{font-weight:700;min-width:20px;text-align:center}
+.delete-btn{margin-left:auto;color:#999;font-size:18px;cursor:pointer}
+.resume{padding:16px;border-top:1px solid #E5E5E5;margin-top:10px}
+.resume-row{display:flex;justify-content:space-between;margin-bottom:10px;font-size:15px}
+.resume-row.total{font-weight:900;font-size:18px;margin-top:10px}
+.resume-row.total span{color:#C49B5A}
+.btn-commander{width:100%;background:#D4B896;color:#000;border:none;padding:16px;border-radius:14px;font-size:17px;font-weight:900;font-family:'Montserrat', sans-serif;margin:15px 0}
+.btn-vide{width:100%;background:#fff;color:#000;border:1px solid #E5E5E5;padding:12px;border-radius:14px;font-size:15px;font-weight:700}
 </style>
 </head>
 <body>
@@ -54,31 +62,31 @@ body{background:#F5F5F5;padding-bottom:110px} /* FOND GRIS CLAIR */
     <div class="logo">IDS</div>
     <div class="header-text"><b>INFINITY DRIP</b><br><small>by Bocar</small></div>
   </div>
-  <div class="cart-icon" onclick="ouvrirPanier()"><span id="compteurHeader">0</span> 🛒</div>
+  <div class="cart-icon" onclick="ouvrirPanier()">🛒<div class="cart-count" id="compteurHeader">0</div></div>
 </div>
 
-<div class="banner">
-  <h1>PREMIUM QUALITÉ</h1>
-</div>
-
+<div class="banner"><h1>PREMIUM QUALITÉ</h1></div>
 <div class="container"><div class="grid" id="produits"></div></div>
 
 <div class="btn-finaliser" onclick="ouvrirPanier()">
-  <span class="dot"></span>
-  Finaliser - <span id="total">0</span> FCFA ( <span class="badge" id="compteur">0</span> )
+  <span>●</span> Finaliser - <span id="total">0</span> FCFA
 </div>
 <div class="site-link">boubacaryarra2-collab.github.io</div>
 
+<!-- POPUP PANIER -->
 <div id="popupFinaliser">
-  <div class="popup-content">
-    <h2>Finaliser</h2>
-    <div id="panierItems"></div>
-    <div class="total">Total: <span id="totalPopup">0</span> FCFA</div>
-    <label><b>VOTRE NOM</b></label><input id="nomFinal" placeholder="Bocar">
-    <label><b>TÉLÉPHONE</b></label><input id="telFinal" placeholder="72039675">
-    <label><b>ADRESSE</b></label><input id="adresseFinal" placeholder="Djelibougou">
-    <button class="btn-payer" onclick="validerCommande()">Commander sur WhatsApp</button>
-    <button class="btn-fermer" onclick="fermerPanier()">Fermer</button>
+  <div class="popup-header">
+    <h2>Votre panier</h2>
+    <button class="close-btn" onclick="fermerPanier()">×</button>
+  </div>
+  <div class="panier-content" id="panierItems"></div>
+  <div class="resume">
+    <div class="resume-row"><span>Sous-total</span><span id="sousTotal">0 FCFA</span></div>
+    <div class="resume-row"><span>Livraison</span><span style="color:#059669;font-weight:700">Gratuite</span></div>
+    <hr style="margin:10px 0;border:none;border-top:1px solid #E5E5E5">
+    <div class="resume-row total"><span>Total</span><span id="totalPopup">0 FCFA</span></div>
+    <button class="btn-commander" onclick="validerCommande()">Commander tout</button>
+    <button class="btn-vide" onclick="viderPanier()">Vider le panier</button>
   </div>
 </div>
 
@@ -111,41 +119,75 @@ function afficherProduits(){
   document.getElementById('produits').innerHTML=html;
 }
 afficherProduits();
+
 function ajouter(nom,prix,img){
-  panier.push({nom,prix,img});
-  document.getElementById('compteur').innerText=panier.length;
-  document.getElementById('compteurHeader').innerText=panier.length;
-  let total=panier.reduce((s,i)=>s+i.prix,0);
-  document.getElementById('total').innerText=total.toLocaleString();
+  let exist = panier.find(i=>i.nom==nom);
+  if(exist){exist.qte++;}
+  else{panier.push({nom,prix,img,qte:1});}
+  majCompteur();
 }
+function majCompteur(){
+  let totalQte = panier.reduce((s,i)=>s+i.qte,0);
+  let totalPrix = panier.reduce((s,i)=>s+i.prix*i.qte,0);
+  document.getElementById('compteurHeader').innerText=totalQte;
+  document.getElementById('total').innerText=totalPrix.toLocaleString();
+}
+
 function ouvrirPanier(){
-  if(panier.length==0){alert("Panier vide");return;}
   document.getElementById('popupFinaliser').style.display='block';
-  let html=''; let total=0;
-  panier.forEach(item=>{
-    html+=`<div class="panier-item">
-      <img src="${item.img}">
-      <div><b>${item.nom}</b><br><small>Qté: 1</small></div>
-      <div class="panier-prix">${item.prix.toLocaleString()} FCFA</div>
-    </div>`;
-    total+=item.prix;
-  });
-  document.getElementById('panierItems').innerHTML=html;
-  document.getElementById('totalPopup').innerText=total.toLocaleString();
+  majPanier();
 }
 function fermerPanier(){document.getElementById('popupFinaliser').style.display='none';}
+
+function majPanier(){
+  let html='';
+  let total=0;
+  panier.forEach((item,idx)=>{
+    html+=`<div class="panier-item">
+      <img src="${item.img}">
+      <div class="panier-info">
+        <div class="panier-nom">${item.nom}</div>
+        <div class="panier-prix">${item.prix.toLocaleString()} FCFA</div>
+        <div class="qte-controls">
+          <div class="qte-btn" onclick="changerQte(${idx},-1)">-</div>
+          <div class="qte-num">${item.qte}</div>
+          <div class="qte-btn" onclick="changerQte(${idx},1)">+</div>
+        </div>
+      </div>
+      <div class="delete-btn" onclick="supprimer(${idx})">×</div>
+    </div>`;
+    total+=item.prix*item.qte;
+  });
+  document.getElementById('panierItems').innerHTML=html || '<p style="text-align:center;padding:40px;color:#999">Votre panier est vide</p>';
+  document.getElementById('sousTotal').innerText=total.toLocaleString()+' FCFA';
+  document.getElementById('totalPopup').innerText=total.toLocaleString()+' FCFA';
+}
+function changerQte(index,change){
+  panier[index].qte+=change;
+  if(panier[index].qte<=0){panier.splice(index,1);}
+  majCompteur(); majPanier();
+}
+function supprimer(index){
+  panier.splice(index,1);
+  majCompteur(); majPanier();
+}
+function viderPanier(){
+  panier=[]; majCompteur(); majPanier();
+}
+
 function validerCommande(){
-  let nom=document.getElementById('nomFinal').value;
-  let tel=document.getElementById('telFinal').value;
-  let adresse=document.getElementById('adresseFinal').value;
-  let total=panier.reduce((s,i)=>s+i.prix,0);
+  if(panier.length==0){alert("Panier vide");return;}
+  let nom=prompt("Ton nom:");
+  let tel=prompt("Ton téléphone:");
+  let adresse=prompt("Adresse de livraison:");
   if(!nom||!tel){alert("Remplis nom et téléphone");return;}
+  let total=panier.reduce((s,i)=>s+i.prix*i.qte,0);
   let msg="🔥 COMMANDE INFINITY DRIP by Bocar 🔥%0A%0A";
-  panier.forEach((i,idx)=>{msg+=(idx+1)+". "+i.nom+" - "+i.prix.toLocaleString()+" FCFA%0A";});
+  panier.forEach((i,idx)=>{msg+=(idx+1)+". "+i.nom+" x"+i.qte+" - "+(i.prix*i.qte).toLocaleString()+" FCFA%0A";});
   msg+="TOTAL : "+total.toLocaleString()+" FCFA%0A%0A";
   msg+="Nom: "+nom+"%0ATel: "+tel+"%0AAdresse: "+adresse;
   window.open("https://wa.me/22372039675?text="+msg,'_blank');
-  fermerPanier();
+  viderPanier(); fermerPanier();
 }
 </script>
 </body>
