@@ -67,7 +67,8 @@
 <script>
 let panier = [];
 function ajouterPanier(nom, prix){
-  panier.push({nom, prix});
+  function ajouterPanier(nom, prix, img){
+  panier.push({nom, prix, img});
   document.getElementById('compteur').innerText = panier.length;
   let total = panier.reduce((sum, item) => sum + item.prix, 0);
   document.getElementById('total').innerText = total.toLocaleString();
