@@ -3,86 +3,88 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>YARRA MARKET - Boutique en ligne</title>
+<title>INFINITY-DRIP💧store 🇲🇱</title>
 <style>
-  *{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
-  body{background:#f8f8f8}
-  .navbar{background:white;padding:12px 15px;display:flex;justify-content:space-between;align-items:center;box-shadow:0 2px 5px rgba(0,0,0,0.1);position:sticky;top:0;z-index:99}
-  .logo{font-size:20px;font-weight:bold;color:#0A7A3B}
-  .panier-ico{background:#25D366;color:white;padding:8px 12px;border-radius:20px;font-weight:bold;font-size:13px}
-  .banner{background:linear-gradient(90deg,#0A7A3B,#25D366);color:white;text-align:center;padding:30px 15px}
-  .banner h1{font-size:22px;margin-bottom:8px}
-  .search{padding:15px;background:white}
-  .search input{width:100%;padding:12px;border:1px solid #ddd;border-radius:25px;font-size:14px}
-  .categorie{padding:15px;font-size:16px;font-weight:bold}
-  .produits{display:grid;grid-template-columns:repeat(2, 1fr);gap:10px;padding:0 12px 100px 12px}
-  .carte{background:white;border-radius:12px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,0.08)}
-  .carte img{width:100%;height:170px;object-fit:cover}
-  .badge{position:absolute;background:red;color:white;font-size:10px;padding:3px 6px;border-radius:4px;margin:5px}
-  .contenu{padding:10px;position:relative}
-  .nom{font-size:13px;font-weight:bold;color:#333;height:35px;overflow:hidden}
-  .stock{font-size:11px;color:#888}
-  .prix{font-size:17px;font-weight:bold;color:#0A7A3B;margin:5px 0}
-  .btn{background:#0A7A3B;color:white;border:none;width:100%;padding:9px;border-radius:8px;font-weight:bold;font-size:13px}
-  .btn-whatsapp{position:fixed;bottom:15px;left:15px;right:15px;background:#25D366;color:white;padding:15px;border-radius:12px;text-align:center;font-weight:bold;font-size:16px;box-shadow:0 4px 15px rgba(37,211,102,0.4);z-index:999}
+*{margin:0;padding:0;box-sizing:border-box;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI'}
+body{background:#f5f5f5;padding-bottom:70px}
+header{background:#fff;padding:12px 15px;box-shadow:0 2px 5px rgba(0,0,0,.08);position:sticky;top:0;z-index:10;display:flex;justify-content:space-between;align-items:center}
+header h1{color:#00BFFF;font-size:18px;font-weight:800}
+.panier-btn{background:#25D366;color:#fff;border:none;border-radius:50%;width:40px;height:40px;font-weight:bold;cursor:pointer}
+.search{padding:15px;background:#fff}
+.search input{width:100%;padding:12px;border:1px solid #ddd;border-radius:25px;font-size:14px}
+.container{max-width:500px;margin:0 auto;padding:15px}
+.titre{font-size:18px;font-weight:bold;margin:15px 5px}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.carte{background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,.08)}
+.img-box{position:relative}
+.badge{position:absolute;top:8px;left:8px;background:#e74c3c;color:#fff;padding:3px 7px;font-size:11px;border-radius:5px;font-weight:bold}
+.carte img{width:100%;height:180px;object-fit:cover}
+.contenu{padding:10px}
+.nom{font-size:13px;font-weight:600;height:34px;margin-bottom:4px}
+.stock{font-size:12px;color:#666;margin-bottom:6px}
+.prix{color:#00BFFF;font-size:17px;font-weight:bold;margin-bottom:8px}
+.btn{width:100%;background:#00BFFF;color:#fff;border:none;padding:9px;border-radius:8px;font-weight:bold;font-size:13px;cursor:pointer}
+.btn-whatsapp{position:fixed;bottom:0;left:0;right:0;background:#25D366;color:#fff;border:none;padding:16px;font-size:15px;font-weight:bold;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px}
 </style>
 </head>
 <body>
+<header><h1>INFINITY-DRIP💧store 🇲🇱</h1><button class="panier-btn" id="compteur">0</button></header>
+<div class="search"><input type="text" id="search" placeholder="Recher un maillot..."></div>
+<div class="container">
+<h2 class="titre">Produits Populaires</h2>
+<div class="grid" id="produits">
 
-<div class="navbar">
-  <div class="logo">YARRA MARKET 🇲🇱</div>
-  <div class="panier-ico" onclick="commander()">🛒 <span id="compteur">0</span></div>
-</div>
+<div class="carte" data-nom="Bayern Munich Edition Speciale"><div class="img-box"><div class="badge">-0%</div><img src="IMG_2840.jpeg"></div><div class="contenu"><div class="nom">Maillot Bayern Munich Edition Speciale</div><div class="stock">Stock: 15 | S-XXL</div><div class="prix">7 000 FCFA</div><button class="btn" onclick="ajouter('Bayern Munich Edition Speciale', 7000, 'IMG_2840.jpeg')">Ajouter au panier</button></div></div>
 
-<div class="banner">
-  <h1>Maillots Football Qualité</h1>
-  <p>Livraison partout au Mali - Paiement Orange Money</p>
-</div>
+<div class="carte" data-nom="PSG Exterieur"><div class="img-box"><div class="badge">-0%</div><img src="IMG_2844.jpeg"></div><div class="contenu"><div class="nom">Maillot PSG Exterieur</div><div class="stock">Stock: 15 | S-XXL</div><div class="prix">7 000 FCFA</div><button class="btn" onclick="ajouter('PSG Exterieur', 7000, 'IMG_2844.jpeg')">Ajouter au panier</button></div></div>
 
-<div class="search">
-  <input type="text" placeholder="Recher un maillot...">
-</div>
+<div class="carte" data-nom="Man United 3eme"><div class="img-box"><div class="badge">-0%</div><img src="IMG_2843.jpeg"></div><div class="contenu"><div class="nom">Maillot Man United 3eme</div><div class="stock">Stock: 15 | S-XXL</div><div class="prix">7 000 FCFA</div><button class="btn" onclick="ajouter('Man United 3eme', 7000, 'IMG_2843.jpeg')">Ajouter au panier</button></div></div>
 
-<h2 class="categorie">Produits Populaires</h2>
+<div class="carte" data-nom="Arsenal Domicile"><div class="img-box"><div class="badge">-0%</div><img src="IMG_2837.jpeg"></div><div class="contenu"><div class="nom">Maillot Arsenal Domicile</div><div class="stock">Stock: 15 | S-XXL</div><div class="prix">7 000 FCFA</div><button class="btn" onclick="ajouter('Arsenal Domicile', 7000, 'IMG_2837.jpeg')">Ajouter au panier</button></div></div>
 
-<div class="produits">
+<div class="carte" data-nom="Liverpool Exterieur"><div class="img-box"><div class="badge">-0%</div><img src="IMG_2836.jpeg"></div><div class="contenu"><div class="nom">Maillot Liverpool Exterieur</div><div class="stock">Stock: 15 | S-XXL</div><div class="prix">7 000 FCFA</div><button class="btn" onclick="ajouter('Liverpool Exterieur', 7000, 'IMG_2836.jpeg')">Ajouter au panier</button></div></div>
 
-<div class="carte"><div class="badge">-0%</div><img src="IMG_2840.jpeg"><div class="contenu"><div class="nom">Maillot Bayern Munich Édition Spéciale</div><div class="stock">Stock: 15 | S-XXL</div><div class="prix">7 000 FCFA</div><button class="btn" onclick="ajouterPanier('Bayern Édition Spéciale', 7000)">Ajouter au panier</button></div></div>
-<div class="carte"><div class="badge">-0%</div><img src="IMG_2839.jpeg"><div class="contenu"><div class="nom">Maillot PSG Extérieur</div><div class="stock">Stock: 15 | S-XXL</div><div class="prix">7 000 FCFA</div><button class="btn" onclick="ajouterPanier('PSG Extérieur', 7000)">Ajouter au panier</button></div></div>
-<div class="carte"><div class="badge">-0%</div><img src="IMG_2838.jpeg"><div class="contenu"><div class="nom">Maillot Man United 3ème</div><div class="stock">Stock: 15 | S-XXL</div><div class="prix">7 000 FCFA</div><button class="btn" onclick="ajouterPanier('Man United 3ème', 7000)">Ajouter au panier</button></div></div>
-<div class="carte"><div class="badge">-0%</div><img src="IMG_2837.jpeg"><div class="contenu"><div class="nom">Maillot Arsenal Domicile</div><div class="stock">Stock: 15 | S-XXL</div><div class="prix">7 000 FCFA</div><button class="btn" onclick="ajouterPanier('Arsenal Domicile', 7000)">Ajouter au panier</button></div></div>
-<div class="carte"><div class="badge">-0%</div><img src="IMG_2836.jpeg"><div class="contenu"><div class="nom">Maillot Liverpool Extérieur</div><div class="stock">Stock: 15 | S-XXL</div><div class="prix">7 000 FCFA</div><button class="btn" onclick="ajouterPanier('Liverpool Extérieur', 7000)">Ajouter au panier</button></div></div>
-<div class="carte"><div class="badge">-0%</div><img src="IMG_2835.jpeg"><div class="contenu"><div class="nom">Maillot Man United Domicile</div><div class="stock">Stock: 15 | S-XXL</div><div class="prix">7 000 FCFA</div><button class="btn" onclick="ajouterPanier('Man United Domicile', 7000)">Ajouter au panier</button></div></div>
-<div class="carte"><div class="badge">-0%</div><img src="IMG_2834.jpeg"><div class="contenu"><div class="nom">Maillot Bayern Munich Domicile</div><div class="stock">Stock: 15 | S-XXL</div><div class="prix">7 000 FCFA</div><button class="btn" onclick="ajouterPanier('Bayern Domicile', 7000)">Ajouter au panier</button></div></div>
-<div class="carte"><div class="badge">-0%</div><img src="IMG_2833.jpeg"><div class="contenu"><div class="nom">Maillot Barça Domicile</div><div class="stock">Stock: 15 | S-XXL</div><div class="prix">7 000 FCFA</div><button class="btn" onclick="ajouterPanier('Barça Domicile', 7000)">Ajouter au panier</button></div></div>
-<div class="carte"><div class="badge">-0%</div><img src="IMG_2832.jpeg"><div class="contenu"><div class="nom">Maillot Real Madrid Domicile</div><div class="stock">Stock: 15 | S-XXL</div><div class="prix">7 000 FCFA</div><button class="btn" onclick="ajouterPanier('Real Madrid Domicile', 7000)">Ajouter au panier</button></div></div>
-<div class="carte"><div class="badge">-0%</div><img src="IMG_2841.jpeg"><div class="contenu"><div class="nom">Maillot OM Extérieur</div><div class="stock">Stock: 15 | S-XXL</div><div class="prix">7 000 FCFA</div><button class="btn" onclick="ajouterPanier('OM Extérieur', 7000)">Ajouter au panier</button></div></div>
+<div class="carte" data-nom="Man United Domicile"><div class="img-box"><div class="badge">-0%</div><img src="IMG_2835.jpeg"></div><div class="contenu"><div class="nom">Maillot Man United Domicile</div><div class="stock">Stock: 15 | S-XXL</div><div class="prix">7 000 FCFA</div><button class="btn" onclick="ajouter('Man United Domicile', 7000, 'IMG_2835.jpeg')">Ajouter au panier</button></div></div>
 
-</div>
+<div class="carte" data-nom="Bayern Domicile"><div class="img-box"><div class="badge">-0%</div><img src="IMG_2834.jpeg"></div><div class="contenu"><div class="nom">Maillot Bayern Munich Domicile</div><div class="stock">Stock: 15 | S-XXL</div><div class="prix">7 000 FCFA</div><button class="btn" onclick="ajouter('Bayern Domicile', 7000, 'IMG_2834.jpeg')">Ajouter au panier</button></div></div>
 
-<div class="btn-whatsapp" onclick="commander()">
-🟢 Commander sur WhatsApp - <span id="total">0</span> FCFA
-</div>
+<div class="carte" data-nom="Barca Domicile"><div class="img-box"><div class="badge">-0%</div><img src="IMG_2833.jpeg"></div><div class="contenu"><div class="nom">Maillot Barça Domicile</div><div class="stock">Stock: 15 | S-XXL</div><div class="prix">7 000 FCFA</div><button class="btn" onclick="ajouter('Barca Domicile', 7000, 'IMG_2833.jpeg')">Ajouter au panier</button></div></div>
+
+<div class="carte" data-nom="Real Madrid Domicile"><div class="img-box"><div class="badge">-0%</div><img src="IMG_2832.jpeg"></div><div class="contenu"><div class="nom">Maillot Real Madrid Domicile</div><div class="stock">Stock: 15 | S-XXL</div><div class="prix">7 000 FCFA</div><button class="btn" onclick="ajouter('Real Madrid Domicile', 7000, 'IMG_2832.jpeg')">Ajouter au panier</button></div></div>
+
+<div class="carte" data-nom="OM Exterieur"><div class="img-box"><div class="badge">-0%</div><img src="IMG_2841.jpeg"></div><div class="contenu"><div class="nom">Maillot OM Exterieur</div><div class="stock">Stock: 15 | S-XXL</div><div class="prix">7 000 FCFA</div><button class="btn" onclick="ajouter('OM Exterieur', 7000, 'IMG_2841.jpeg')">Ajouter au panier</button></div></div>
+
+</div></div>
+
+<button class="btn-whatsapp" onclick="commander()">🟢 Commander sur WhatsApp - <span id="total">0</span> FCFA</button>
 
 <script>
 let panier = [];
-function ajouterPanier(nom, prix){
-  function ajouterPanier(nom, prix, img){
+function ajouter(nom, prix, img){
   panier.push({nom, prix, img});
   document.getElementById('compteur').innerText = panier.length;
   let total = panier.reduce((sum, item) => sum + item.prix, 0);
   document.getElementById('total').innerText = total.toLocaleString();
-  
-  alert("✅ " + nom + " ajouté")
+  alert(nom + " ajouté !");
 }
 function commander(){
   if(panier.length === 0){alert("Panier vide"); return;}
-  let message = "Salam YARRA MARKET %F0%9F%87%B2%F0%9F%87%B1%0AJe commande :%0A%0A";
-  panier.forEach((item, i) => {message += (i+1) + ". " + item.nom + " - " + item.prix + " FCFA%0A"});
+  let baseURL = "https://boubacaryarra2-collab.github.io/";
+  let message = "Salam INFINITY-DRIP💧store 🇲🇱%0AJe commande :%0A%0A";
+  panier.forEach((item, i) => {
+    message += (i+1) + ". " + item.nom + " - " + item.prix.toLocaleString() + " FCFA%0A";
+    message += "Photo: " + baseURL + item.img + "%0A%0A";
+  });
   let total = panier.reduce((sum, item) => sum + item.prix, 0);
-  message += "%0ATOTAL : " + total + " FCFA%0AOrange Money: 72 03 96 75";
+  message += "TOTAL : " + total.toLocaleString() + " FCFA%0AOrange Money: 72 03 96 75";
   window.open("https://wa.me/22372039675?text=" + message, '_blank');
 }
+document.getElementById('search').addEventListener('keyup', function(){
+  let val = this.value.toLowerCase();
+  document.querySelectorAll('.carte').forEach(c => {
+    c.style.display = c.dataset.nom.toLowerCase().includes(val) ? '' : 'none';
+  });
+});
 </script>
 </body>
 </html>
