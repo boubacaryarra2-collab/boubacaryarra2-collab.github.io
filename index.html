@@ -1,26 +1,67 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>YARRA MARKET - Boutique en ligne</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
+  body{background:#f8f8f8}
+  .navbar{background:white;padding:12px 15px;display:flex;justify-content:space-between;align-items:center;box-shadow:0 2px 5px rgba(0,0,0,0.1);position:sticky;top:0;z-index:99}
+  .logo{font-size:20px;font-weight:bold;color:#0A7A3B}
+  .panier-ico{background:#25D366;color:white;padding:8px 12px;border-radius:20px;font-weight:bold;font-size:13px}
+  .banner{background:linear-gradient(90deg,#0A7A3B,#25D366);color:white;text-align:center;padding:30px 15px}
+  .banner h1{font-size:22px;margin-bottom:8px}
+  .search{padding:15px;background:white}
+  .search input{width:100%;padding:12px;border:1px solid #ddd;border-radius:25px;font-size:14px}
+  .categorie{padding:15px;font-size:16px;font-weight:bold}
+  .produits{display:grid;grid-template-columns:repeat(2, 1fr);gap:10px;padding:0 12px 100px 12px}
+  .carte{background:white;border-radius:12px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,0.08)}
+  .carte img{width:100%;height:170px;object-fit:cover}
+  .badge{position:absolute;background:red;color:white;font-size:10px;padding:3px 6px;border-radius:4px;margin:5px}
+  .contenu{padding:10px;position:relative}
+  .nom{font-size:13px;font-weight:bold;color:#333;height:35px;overflow:hidden}
+  .stock{font-size:11px;color:#888}
+  .prix{font-size:17px;font-weight:bold;color:#0A7A3B;margin:5px 0}
+  .btn{background:#0A7A3B;color:white;border:none;width:100%;padding:9px;border-radius:8px;font-weight:bold;font-size:13px}
+  .btn-whatsapp{position:fixed;bottom:15px;left:15px;right:15px;background:#25D366;color:white;padding:15px;border-radius:12px;text-align:center;font-weight:bold;font-size:16px;box-shadow:0 4px 15px rgba(37,211,102,0.4);z-index:999}
+</style>
+</head>
+<body>
+
+<div class="navbar">
+  <div class="logo">YARRA MARKET 🇲🇱</div>
+  <div class="panier-ico" onclick="commander()">🛒 <span id="compteur">0</span></div>
+</div>
+
+<div class="banner">
+  <h1>Maillots Football Qualité</h1>
+  <p>Livraison partout au Mali - Paiement Orange Money</p>
+</div>
+
+<div class="search">
+  <input type="text" placeholder="Recher un maillot...">
+</div>
+
+<h2 class="categorie">Produits Populaires</h2>
+
 <div class="produits">
 
-<div class="carte"><img src="IMG_2840.jpeg"><div class="contenu"><h3>Maillot Bayern Munich Édition Spéciale</h3><p>Stock : 15</p><p>Noir/Rouge T-Mobile. S à XXL</p><p class="prix">7 000 FCFA</p><button class="btn-ajout" onclick="ajouterPanier('Maillot Bayern Munich Édition Spéciale', 7000)">Ajouter au panier</button></div></div>
-<div class="carte"><img src="IMG_2839.jpeg"><div class="contenu"><h3>Maillot PSG Extérieur</h3><p>Stock : 15</p><p>Blanc Qatar Airways. S à XXL</p><p class="prix">7 000 FCFA</p><button class="btn-ajout" onclick="ajouterPanier('Maillot PSG Extérieur', 7000)">Ajouter au panier</button></div></div>
-<div class="carte"><img src="IMG_2838.jpeg"><div class="contenu"><h3>Maillot Man United 3ème</h3><p>Stock : 15</p><p>Crème Snapdragon. S à XXL</p><p class="prix">7 000 FCFA</p><button class="btn-ajout" onclick="ajouterPanier('Maillot Man United 3ème', 7000)">Ajouter au panier</button></div></div>
-<div class="carte"><img src="IMG_2837.jpeg"><div class="contenu"><h3>Maillot Arsenal Domicile</h3><p>Stock : 15</p><p>Rouge/Blanc Emirates. S à XXL</p><p class="prix">7 000 FCFA</p><button class="btn-ajout" onclick="ajouterPanier('Maillot Arsenal Domicile', 7000)">Ajouter au panier</button></div></div>
-<div class="carte"><img src="IMG_2836.jpeg"><div class="contenu"><h3>Maillot Liverpool Extérieur</h3><p>Stock : 15</p><p>Bordeaux Standard Chartered. S à XXL</p><p class="prix">7 000 FCFA</p><button class="btn-ajout" onclick="ajouterPanier('Maillot Liverpool Extérieur', 7000)">Ajouter au panier</button></div></div>
-<div class="carte"><img src="IMG_2835.jpeg"><div class="contenu"><h3>Maillot Man United Domicile</h3><p>Stock : 15</p><p>Bleu Snapdragon. S à XXL</p><p class="prix">7 000 FCFA</p><button class="btn-ajout" onclick="ajouterPanier('Maillot Man United Domicile', 7000)">Ajouter au panier</button></div></div>
-<div class="carte"><img src="IMG_2834.jpeg"><div class="contenu"><h3>Maillot Bayern Munich Domicile</h3><p>Stock : 15</p><p>Blanc T-Mobile. S à XXL</p><p class="prix">7 000 FCFA</p><button class="btn-ajout" onclick="ajouterPanier('Maillot Bayern Munich Domicile', 7000)">Ajouter au panier</button></div></div>
-<div class="carte"><img src="IMG_2833.jpeg"><div class="contenu"><h3>Maillot Barça Domicile</h3><p>Stock : 15</p><p>Rayé Bleu/Grenat. S à XXL</p><p class="prix">7 000 FCFA</p><button class="btn-ajout" onclick="ajouterPanier('Maillot Barça Domicile', 7000)">Ajouter au panier</button></div></div>
-<div class="carte"><img src="IMG_2832.jpeg"><div class="contenu"><h3>Maillot Real Madrid Domicile</h3><p>Stock : 15</p><p>Blanc Emirates. S à XXL</p><p class="prix">7 000 FCFA</p><button class="btn-ajout" onclick="ajouterPanier('Maillot Real Madrid Domicile', 7000)">Ajouter au panier</button></div></div>
-<div class="carte"><img src="IMG_2841.jpeg"><div class="contenu"><h3>Maillot OM Extérieur</h3><p>Stock : 15</p><p>Blanc CMA CGM. S à XXL</p><p class="prix">7 000 FCFA</p><button class="btn-ajout" onclick="ajouterPanier('Maillot OM Extérieur', 7000)">Ajouter au panier</button></div></div>
+<div class="carte"><div class="badge">-0%</div><img src="IMG_2840.jpeg"><div class="contenu"><div class="nom">Maillot Bayern Munich Édition Spéciale</div><div class="stock">Stock: 15 | S-XXL</div><div class="prix">7 000 FCFA</div><button class="btn" onclick="ajouterPanier('Bayern Édition Spéciale', 7000)">Ajouter au panier</button></div></div>
+<div class="carte"><div class="badge">-0%</div><img src="IMG_2839.jpeg"><div class="contenu"><div class="nom">Maillot PSG Extérieur</div><div class="stock">Stock: 15 | S-XXL</div><div class="prix">7 000 FCFA</div><button class="btn" onclick="ajouterPanier('PSG Extérieur', 7000)">Ajouter au panier</button></div></div>
+<div class="carte"><div class="badge">-0%</div><img src="IMG_2838.jpeg"><div class="contenu"><div class="nom">Maillot Man United 3ème</div><div class="stock">Stock: 15 | S-XXL</div><div class="prix">7 000 FCFA</div><button class="btn" onclick="ajouterPanier('Man United 3ème', 7000)">Ajouter au panier</button></div></div>
+<div class="carte"><div class="badge">-0%</div><img src="IMG_2837.jpeg"><div class="contenu"><div class="nom">Maillot Arsenal Domicile</div><div class="stock">Stock: 15 | S-XXL</div><div class="prix">7 000 FCFA</div><button class="btn" onclick="ajouterPanier('Arsenal Domicile', 7000)">Ajouter au panier</button></div></div>
+<div class="carte"><div class="badge">-0%</div><img src="IMG_2836.jpeg"><div class="contenu"><div class="nom">Maillot Liverpool Extérieur</div><div class="stock">Stock: 15 | S-XXL</div><div class="prix">7 000 FCFA</div><button class="btn" onclick="ajouterPanier('Liverpool Extérieur', 7000)">Ajouter au panier</button></div></div>
+<div class="carte"><div class="badge">-0%</div><img src="IMG_2835.jpeg"><div class="contenu"><div class="nom">Maillot Man United Domicile</div><div class="stock">Stock: 15 | S-XXL</div><div class="prix">7 000 FCFA</div><button class="btn" onclick="ajouterPanier('Man United Domicile', 7000)">Ajouter au panier</button></div></div>
+<div class="carte"><div class="badge">-0%</div><img src="IMG_2834.jpeg"><div class="contenu"><div class="nom">Maillot Bayern Munich Domicile</div><div class="stock">Stock: 15 | S-XXL</div><div class="prix">7 000 FCFA</div><button class="btn" onclick="ajouterPanier('Bayern Domicile', 7000)">Ajouter au panier</button></div></div>
+<div class="carte"><div class="badge">-0%</div><img src="IMG_2833.jpeg"><div class="contenu"><div class="nom">Maillot Barça Domicile</div><div class="stock">Stock: 15 | S-XXL</div><div class="prix">7 000 FCFA</div><button class="btn" onclick="ajouterPanier('Barça Domicile', 7000)">Ajouter au panier</button></div></div>
+<div class="carte"><div class="badge">-0%</div><img src="IMG_2832.jpeg"><div class="contenu"><div class="nom">Maillot Real Madrid Domicile</div><div class="stock">Stock: 15 | S-XXL</div><div class="prix">7 000 FCFA</div><button class="btn" onclick="ajouterPanier('Real Madrid Domicile', 7000)">Ajouter au panier</button></div></div>
+<div class="carte"><div class="badge">-0%</div><img src="IMG_2841.jpeg"><div class="contenu"><div class="nom">Maillot OM Extérieur</div><div class="stock">Stock: 15 | S-XXL</div><div class="prix">7 000 FCFA</div><button class="btn" onclick="ajouterPanier('OM Extérieur', 7000)">Ajouter au panier</button></div></div>
 
 </div>
 
-<div class="panier" onclick="commander()">
-🛒 Voir Panier (<span id="total">0</span> FCFA)
-</div>
-
-<div class="footer">
-<h3>YARRA MARKET 🇲🇱</h3>
-<p>Orange Money : <b class="orange">72 03 96 75</b></p>
-<p>© 2026 Yarra Market</p>
+<div class="btn-whatsapp" onclick="commander()">
+🟢 Commander sur WhatsApp - <span id="total">0</span> FCFA
 </div>
 
 <script>
@@ -30,101 +71,15 @@ function ajouterPanier(nom, prix){
   document.getElementById('compteur').innerText = panier.length;
   let total = panier.reduce((sum, item) => sum + item.prix, 0);
   document.getElementById('total').innerText = total.toLocaleString();
-  alert(nom + " ajouté au panier !")
+  alert("✅ " + nom + " ajouté")
 }
 function commander(){
   if(panier.length === 0){alert("Panier vide"); return;}
-  let message = "Bonjour YARRA MARKET, je commande :%0A";
-  panier.forEach(item => {message += "- " + item.nom + " : " + item.prix + " FCFA%0A"});
+  let message = "Salam YARRA MARKET %F0%9F%87%B2%F0%9F%87%B1%0AJe commande :%0A%0A";
+  panier.forEach((item, i) => {message += (i+1) + ". " + item.nom + " - " + item.prix + " FCFA%0A"});
   let total = panier.reduce((sum, item) => sum + item.prix, 0);
-  message += "Total : " + total + " FCFA. Paiement Orange Money 72 03 96 75";
-  window.open("https://wa.me/22372039675?text=" + message);
-}
-</script>
-</body>
-</html>
-<div class="carte"><img src="IMG_2840.jpeg"><div class="contenu"><h3>Maillot Bayern Munich Édition Spéciale</h3><p>Stock : 15</p><p>Noir/Rouge T-Mobile. S à XXL</p><p class="prix">7 000 FCFA</p><button class="btn-ajout" onclick="ajouterPanier('Maillot Bayern Munich Édition Spéciale', 7000)">Ajouter au panier</button></div></div>
-<div class="carte"><img src="IMG_2839.jpeg"><div class="contenu"><h3>Maillot PSG Extérieur</h3><p>Stock : 15</p><p>Blanc Qatar Airways. S à XXL</p><p class="prix">7 000 FCFA</p><button class="btn-ajout" onclick="ajouterPanier('Maillot PSG Extérieur', 7000)">Ajouter au panier</button></div></div>
-<div class="carte"><img src="IMG_2838.jpeg"><div class="contenu"><h3>Maillot Man United 3ème</h3><p>Stock : 15</p><p>Crème Snapdragon. S à XXL</p><p class="prix">7 000 FCFA</p><button class="btn-ajout" onclick="ajouterPanier('Maillot Man United 3ème', 7000)">Ajouter au panier</button></div></div>
-<div class="carte"><img src="IMG_2837.jpeg"><div class="contenu"><h3>Maillot Arsenal Domicile</h3><p>Stock : 15</p><p>Rouge/Blanc Emirates. S à XXL</p><p class="prix">7 000 FCFA</p><button class="btn-ajout" onclick="ajouterPanier('Maillot Arsenal Domicile', 7000)">Ajouter au panier</button></div></div>
-<div class="carte"><img src="IMG_2836.jpeg"><div class="contenu"><h3>Maillot Liverpool Extérieur</h3><p>Stock : 15</p><p>Bordeaux Standard Chartered. S à XXL</p><p class="prix">7 000 FCFA</p><button class="btn-ajout" onclick="ajouterPanier('Maillot Liverpool Extérieur', 7000)">Ajouter au panier</button></div></div>
-<div class="carte"><img src="IMG_2835.jpeg"><div class="contenu"><h3>Maillot Man United Domicile</h3><p>Stock : 15</p><p>Bleu Snapdragon. S à XXL</p><p class="prix">7 000 FCFA</p><button class="btn-ajout" onclick="ajouterPanier('Maillot Man United Domicile', 7000)">Ajouter au panier</button></div></div>
-<div class="carte"><img src="IMG_2834.jpeg"><div class="contenu"><h3>Maillot Bayern Munich Domicile</h3><p>Stock : 15</p><p>Blanc T-Mobile. S à XXL</p><p class="prix">7 000 FCFA</p><button class="btn-ajout" onclick="ajouterPanier('Maillot Bayern Munich Domicile', 7000)">Ajouter au panier</button></div></div>
-<div class="carte"><img src="IMG_2833.jpeg"><div class="contenu"><h3>Maillot Barça Domicile</h3><p>Stock : 15</p><p>Rayé Bleu/Grenat. S à XXL</p><p class="prix">7 000 FCFA</p><button class="btn-ajout" onclick="ajouterPanier('Maillot Barça Domicile', 7000)">Ajouter au panier</button></div></div>
-<div class="carte"><img src="IMG_2832.jpeg"><div class="contenu"><h3>Maillot Real Madrid Domicile</h3><p>Stock : 15</p><p>Blanc Emirates. S à XXL</p><p class="prix">7 000 FCFA</p><button class="btn-ajout" onclick="ajouterPanier('Maillot Real Madrid Domicile', 7000)">Ajouter au panier</button></div></div>
-<div class="carte"><img src="IMG_2841.jpeg"><div class="contenu"><h3>Maillot OM Extérieur</h3><p>Stock : 15</p><p>Blanc CMA CGM. S à XXL</p><p class="prix">7 000 FCFA</p><button class="btn-ajout" onclick="ajouterPanier('Maillot OM Extérieur', 7000)">Ajouter au panier</button></div></div>
-
-</div>
-
-<div class="panier" onclick="commander()">
-🛒 Voir Panier (<span id="total">0</span> FCFA)
-</div>
-
-<div class="footer">
-<h3>YARRA MARKET 🇲🇱</h3>
-<p>Orange Money : <b class="orange">72 03 96 75</b></p>
-<p>© 2026 Yarra Market</p>
-</div>
-
-<script>
-let panier = [];
-function ajouterPanier(nom, prix){
-  panier.push({nom, prix});
-  document.getElementById('compteur').innerText = panier.length;
-  let total = panier.reduce((sum, item) => sum + item.prix, 0);
-  document.getElementById('total').innerText = total.toLocaleString();
-  alert(nom + " ajouté au panier !")
-}
-function commander(){
-  if(panier.length === 0){alert("Panier vide"); return;}
-  let message = "Bonjour YARRA MARKET, je commande :%0A";
-  panier.forEach(item => {message += "- " + item.nom + " : " + item.prix + " FCFA%0A"});
-  let total = panier.reduce((sum, item) => sum + item.prix, 0);
-  message += "Total : " + total + " FCFA. Paiement Orange Money 72 03 96 75";
-  window.open("https://wa.me/22372039675?text=" + message);
-}
-</script>
-</body>
-</html>
-<div class="carte"><img src="IMG_2840.jpeg"><div class="contenu"><h3>Maillot Bayern Munich Édition Spéciale</h3><p>Stock : 15</p><p>Noir/Rouge T-Mobile. S à XXL</p><p class="prix">7 000 FCFA</p><button class="btn-ajout" onclick="ajouterPanier('Maillot Bayern Munich Édition Spéciale', 7000)">Ajouter au panier</button></div></div>
-<div class="carte"><img src="IMG_2839.jpeg"><div class="contenu"><h3>Maillot PSG Extérieur</h3><p>Stock : 15</p><p>Blanc Qatar Airways. S à XXL</p><p class="prix">7 000 FCFA</p><button class="btn-ajout" onclick="ajouterPanier('Maillot PSG Extérieur', 7000)">Ajouter au panier</button></div></div>
-<div class="carte"><img src="IMG_2838.jpeg"><div class="contenu"><h3>Maillot Man United 3ème</h3><p>Stock : 15</p><p>Crème Snapdragon. S à XXL</p><p class="prix">7 000 FCFA</p><button class="btn-ajout" onclick="ajouterPanier('Maillot Man United 3ème', 7000)">Ajouter au panier</button></div></div>
-<div class="carte"><img src="IMG_2837.jpeg"><div class="contenu"><h3>Maillot Arsenal Domicile</h3><p>Stock : 15</p><p>Rouge/Blanc Emirates. S à XXL</p><p class="prix">7 000 FCFA</p><button class="btn-ajout" onclick="ajouterPanier('Maillot Arsenal Domicile', 7000)">Ajouter au panier</button></div></div>
-<div class="carte"><img src="IMG_2836.jpeg"><div class="contenu"><h3>Maillot Liverpool Extérieur</h3><p>Stock : 15</p><p>Bordeaux Standard Chartered. S à XXL</p><p class="prix">7 000 FCFA</p><button class="btn-ajout" onclick="ajouterPanier('Maillot Liverpool Extérieur', 7000)">Ajouter au panier</button></div></div>
-<div class="carte"><img src="IMG_2835.jpeg"><div class="contenu"><h3>Maillot Man United Domicile</h3><p>Stock : 15</p><p>Bleu Snapdragon. S à XXL</p><p class="prix">7 000 FCFA</p><button class="btn-ajout" onclick="ajouterPanier('Maillot Man United Domicile', 7000)">Ajouter au panier</button></div></div>
-<div class="carte"><img src="IMG_2834.jpeg"><div class="contenu"><h3>Maillot Bayern Munich Domicile</h3><p>Stock : 15</p><p>Blanc T-Mobile. S à XXL</p><p class="prix">7 000 FCFA</p><button class="btn-ajout" onclick="ajouterPanier('Maillot Bayern Munich Domicile', 7000)">Ajouter au panier</button></div></div>
-<div class="carte"><img src="IMG_2833.jpeg"><div class="contenu"><h3>Maillot Barça Domicile</h3><p>Stock : 15</p><p>Rayé Bleu/Grenat. S à XXL</p><p class="prix">7 000 FCFA</p><button class="btn-ajout" onclick="ajouterPanier('Maillot Barça Domicile', 7000)">Ajouter au panier</button></div></div>
-<div class="carte"><img src="IMG_2832.jpeg"><div class="contenu"><h3>Maillot Real Madrid Domicile</h3><p>Stock : 15</p><p>Blanc Emirates. S à XXL</p><p class="prix">7 000 FCFA</p><button class="btn-ajout" onclick="ajouterPanier('Maillot Real Madrid Domicile', 7000)">Ajouter au panier</button></div></div>
-<div class="carte"><img src="IMG_2841.jpeg"><div class="contenu"><h3>Maillot OM Extérieur</h3><p>Stock : 15</p><p>Blanc CMA CGM. S à XXL</p><p class="prix">7 000 FCFA</p><button class="btn-ajout" onclick="ajouterPanier('Maillot OM Extérieur', 7000)">Ajouter au panier</button></div></div>
-
-</div>
-
-<div class="panier" onclick="commander()">
-🛒 Voir Panier (<span id="total">0</span> FCFA)
-</div>
-
-<div class="footer">
-<h3>YARRA MARKET 🇲🇱</h3>
-<p>Orange Money : <b class="orange">72 03 96 75</b></p>
-<p>© 2026 Yarra Market</p>
-</div>
-
-<script>
-let panier = [];
-function ajouterPanier(nom, prix){
-  panier.push({nom, prix});
-  document.getElementById('compteur').innerText = panier.length;
-  let total = panier.reduce((sum, item) => sum + item.prix, 0);
-  document.getElementById('total').innerText = total.toLocaleString();
-  alert(nom + " ajouté au panier !")
-}
-function commander(){
-  if(panier.length === 0){alert("Panier vide"); return;}
-  let message = "Bonjour YARRA MARKET, je commande :%0A";
-  panier.forEach(item => {message += "- " + item.nom + " : " + item.prix + " FCFA%0A"});
-  let total = panier.reduce((sum, item) => sum + item.prix, 0);
-  message += "Total : " + total + " FCFA. Paiement Orange Money 72 03 96 75";
-  window.open("https://wa.me/22372039675?text=" + message);
+  message += "%0ATOTAL : " + total + " FCFA%0AOrange Money: 72 03 96 75";
+  window.open("https://wa.me/22372039675?text=" + message, '_blank');
 }
 </script>
 </body>
