@@ -4,158 +4,181 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>INFINITY DRIP STORE by Bocar</title>
+
+<!-- FAVICON -->
+<link rel="icon" type="image/png" href="img/favicon-ids.png">
+<link rel="apple-touch-icon" href="img/favicon-ids.png">
+
+<!-- POLICES -->
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800;900&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:-apple-system,BlinkMacSystemFont}
-body{background:#F5F2EB;padding-bottom:80px}
-.header{position:sticky;top:10px;margin:10px 15px;background:#fff;border-radius:20px;padding:14px 18px;display:flex;justify-content:space-between;align-items:center;box-shadow:0 2px 10px rgba(0,0,0,.05)}
-.logo-box{display:flex;align-items:center;gap:10px}
-.logo{ background:#D4A574;color:#000;width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px;font-family: 'Georgia', serif;}
-.hero{background:#000;color:#fff;padding:80px 20px;text-align:center}
-.hero h1{font-size:32px;margin:20px 0;font-family: 'Georgia', serif;}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Outfit', sans-serif}
+body{background:#0F0F0F;padding-bottom:90px;color:#fff}
+
+.header{position:sticky;top:0;margin:0;background:linear-gradient(90deg,#D4A574 0%, #C49B5A 100%);padding:14px 16px;display:flex;justify-content:space-between;align-items:center;z-index:99;box-shadow:0 2px 10px rgba(212,165,116,0.2)}
+.logo-box{display:flex;align-items:center;gap:8px}
+.logo{background:#000;color:#D4A574;width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:12px;font-family:'Montserrat', sans-serif}
+.header b{font-family:'Montserrat', sans-serif;font-weight:800;font-size:16px;color:#000}
+
+/* HERO AVEC LOGO EN FOND */
+.hero{background:#000; padding:80px 20px 60px;text-align:center;position:relative;overflow:hidden}
+.hero::before{
+  content:'';
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  width:350px;
+  height:350px;
+  background:url('img/logo-ids.png') center/contain no-repeat; /* TON LOGO ICI */
+  opacity:0.06;
+  z-index:1;
+}
+.hero::after{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:linear-gradient(180deg, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.9) 100%);z-index:1}
+.hero *{position:relative;z-index:2}
+.hero small{color:#D4A574;letter-spacing:3px;font-size:11px;font-weight:700}
+.hero h1{font-size:28px;margin:15px 0;line-height:1.2;font-family:'Montserrat', sans-serif;font-weight:900;text-transform:uppercase;text-shadow:0 2px 10px rgba(212,165,116,0.3)}
 .hero h1 span{color:#D4A574}
-.btn-main{background:#D4A574;color:#000;border:none;padding:16px 35px;border-radius:30px;font-weight:700}
-.container{padding:30px 15px;max-width:600px;margin:0 auto}
-.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
-.card{background:#fff;border-radius:12px;overflow:hidden}
-.card img{width:100%;height:160px;object-fit:cover}
-.card-body{padding:10px}
-.name{font-weight:700;font-size:14px}
-.price{color:#D4A574;font-size:16px;font-weight:700;margin:5px 0}
-.btn-cart{width:100%;background:#D4A574;color:#000;border:none;padding:10px;border-radius:8px;font-weight:600;font-size:13px}
-.form-section{padding:40px 15px}
-.form-title{text-align:center;margin-bottom:20px}
-.form-title small{color:#D4A574;letter-spacing:2px}
-.form-title h2{font-size:26px;margin-top:8px}
-.form-box{background:#fff;border-radius:15px;padding:20px;max-width:500px;margin:0 auto;box-shadow:0 2px 10px rgba(0,0,0,.05)}
-label{font-size:11px;color:#666;font-weight:600;display:block;margin-bottom:6px}
-.form-row{display:flex;gap:10px;margin-bottom:15px}
-.form-row > div{flex:1}
-input,select,textarea{width:100%;padding:12px;border:1px solid #eee;border-radius:8px;background:#F9F7F4;font-size:14px}
-textarea{resize:none}
-.upload{border:1px dashed #D4A574;border-radius:8px;padding:20px;text-align:center;color:#D4A574;margin-top:5px;font-size:12px;font-weight:700;cursor:pointer}
-.upload small{display:block;color:#999;font-weight:400;margin-top:5px}
-.btn-send{width:100%;background:#D4A574;color:#000;border:none;padding:15px;border-radius:25px;font-weight:700;font-size:15px;margin-top:10px}
-.note{text-align:center;font-size:12px;color:#666;margin-top:15px}
-.contact-card{background:#fff;border-radius:15px;padding:15px;display:flex;align-items:center;gap:12px;margin:15px auto;max-width:500px}
-.whats{background:#25D366;width:50px;height:50px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:24px}
-.snap{background:#FFFC00;width:50px;height:50px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:24px}
-.btn-commander{position:fixed;bottom:0;left:0;right:0;background:#25D366;color:#fff;border:none;padding:16px;font-size:16px;font-weight:700;display:flex;align-items:center;justify-content:center;gap:8px;z-index:200}
-.compteur{background:#fff;color:#25D366;border-radius:50%;width:24px;height:24px;display:flex;align-items:center;justify-content:center;font-size:12px}
+.btn-main{background:linear-gradient(90deg,#D4A574 0%, #C49B5A 100%);color:#000;border:none;padding:15px 32px;border-radius:12px;font-weight:900;font-family:'Montserrat', sans-serif;font-size:14px;border:2px solid #D4A574;box-shadow:0 4px 15px rgba(212,165,116,0.3)}
+
+.container{padding:20px 12px;max-width:650px;margin:0 auto}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.card{background:#1A1A1A;border-radius:16px;overflow:hidden;border:1px solid #2A2A2A;transition:0.3s}
+.card:hover{border-color:#D4A574;transform:translateY(-3px)}
+.card img{width:100%;height:180px;object-fit:cover}
+.card-body{padding:12px 14px}
+.categorie{font-size:10px;color:#D4A574;font-weight:700;letter-spacing:1px;margin-bottom:5px;text-transform:uppercase}
+.name{font-weight:800;font-size:15px;margin-bottom:5px;font-family:'Montserrat', sans-serif;color:#fff}
+.desc{font-size:12px;color:#AAA;line-height:1.4;margin-bottom:8px;height:32px;overflow:hidden}
+.price{color:#D4A574;font-size:16px;font-weight:800;margin-bottom:10px}
+.btn-cart{width:100%;background:linear-gradient(90deg,#D4A574 0%, #C49B5A 100%);color:#000;border:none;padding:11px;border-radius:10px;font-weight:800;font-size:13px;font-family:'Montserrat', sans-serif;transition:0.2s}
+.btn-cart:active{transform:scale(0.96)}
+.btn-cart:disabled{background:#333;color:#666;transform:none}
+
+.stock-badge{display:inline-flex;align-items:center;gap:5px;font-size:11px;color:#00FF88;font-weight:700;background:#0A2E1A;padding:4px 10px;border-radius:20px;margin-bottom:6px;border:1px solid #00FF88}
+
+.btn-finaliser{position:fixed;bottom:0;left:0;right:0;background:#25D366;color:#fff;padding:16px 16px;display:flex;align-items:center;justify-content:center;gap:8px;z-index:200;font-weight:900;font-size:16px;font-family:'Montserrat', sans-serif;box-shadow:0 -4px 20px rgba(37,211,102,0.3)}
+.btn-finaliser span{background:#fff;color:#25D366;border-radius:50%;width:24px;height:24px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:900}
+.site-link{position:fixed;bottom:65px;left:50%;transform:translateX(-50%);background:#0A3D1A;color:#fff;padding:8px 16px;border-radius:20px;font-size:12px;z-index:200;font-weight:600}
+
+/* POPUP FINALISER STYLE PHOTO */
+#popupFinaliser{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.8);z-index:1000;overflow-y:auto;backdrop-filter:blur(5px)}
+.popup-content{background:#fff;max-width:420px;margin:60px auto;padding:20px;border-radius:20px;color:#000}
+.popup-content h2{font-family:'Montserrat', sans-serif;font-weight:900;font-size:22px;margin-bottom:15px;color:#1A1A1A}
+
+.panier-item{display:flex;gap:12px;padding:12px;background:#F5F5F5;border-radius:12px;margin-bottom:10px}
+.panier-item img{width:60px;height:60px;border-radius:10px;object-fit:cover}
+.panier-info{flex:1}
+.panier-nom{font-weight:700;font-size:15px;font-family:'Montserrat'}
+.panier-qte{font-size:13px;color:#666}
+.panier-prix{font-weight:700;font-size:15px;color:#D4A574}
+.total{font-weight:800;font-size:18px;color:#D4A574;text-align:right;margin:15px 0}
+
+.popup-content label{font-weight:800;font-size:11px;letter-spacing:0.5px;color:#666;display:block;margin-top:12px;margin-bottom:6px}
+.popup-content input{background:#F9F9F9;border:1px solid #E0E0E0;color:#000;width:100%;padding:14px;border-radius:10px;font-size:14px}
+.popup-content input:focus{border-color:#D4A574;outline:none}
+
+.mode-paiement{background:#F9F9F9;padding:14px;border-radius:10px;margin:15px 0;border:1px solid #E0E0E0}
+.mode-titre{font-weight:800;font-size:14px;margin-bottom:4px}
+.mode-titre .dispo{color:#22C55E}
+.mode-note{font-size:12px;color:#999}
+
+.btn-payer{width:100%;background:linear-gradient(90deg,#D4A574 0%, #C49B5A 100%);color:#000;padding:16px;border:none;border-radius:12px;font-size:17px;font-weight:900;font-family:'Montserrat', sans-serif;margin-top:10px}
+.btn-fermer{width:100%;background:#F3F3F3;color:#3B82F6;padding:12px;border:none;border-radius:12px;margin-top:8px;font-weight:700}
 </style>
 </head>
 <body>
 
 <div class="header">
-  <div class="logo-box"><div class="logo">IDS</div><div><b>INFINITY DRIP</b><br><small style="color:#D4A574">by Bocar</small></div></div>
-  <div style="cursor:pointer" onclick="ouvrirPanier()"><b id="compteurHeader">0</b> 🛒</div>
+  <div class="logo-box"><div class="logo">IDS</div><div><b>INFINITY DRIP</b><br><small style="font-size:11px">by Bocar</small></div></div>
+  <div style="cursor:pointer;font-weight:800;color:#000" onclick="ouvrirPanier()"><span id="compteurHeader">0</span> 🛒</div>
 </div>
 
 <div class="hero">
-  <small style="color:#D4A574;letter-spacing:3px">INFINITY DRIP STORE</small>
+  <small>INFINITY DRIP STORE</small>
   <h1><span>BY BOCAR</span><br>MAILLOTS FOOTBALL<br>PREMIUM QUALITÉ</h1>
   <button class="btn-main">VOIR LA COLLECTION</button>
 </div>
 
-<div class="container"><div class="grid" id="produits">
-  <div class="card"><img src="IMG_2840.jpeg"><div class="card-body"><div class="name">Bayern Edition</div><div class="price">7 000 FCFA</div><button class="btn-cart" onclick="ajouter('Bayern Edition',7000,'IMG_2840.jpeg')">Ajouter</button></div></div>
-  <div class="card"><img src="IMG_2844.jpeg"><div class="card-body"><div class="name">PSG Exterieur</div><div class="price">7 000 FCFA</div><button class="btn-cart" onclick="ajouter('PSG Exterieur',7000,'IMG_2844.jpeg')">Ajouter</button></div></div>
-  <div class="card"><img src="IMG_2843.jpeg"><div class="card-body"><div class="name">Man United 3eme</div><div class="price">7 000 FCFA</div><button class="btn-cart" onclick="ajouter('Man United 3eme',7000,'IMG_2843.jpeg')">Ajouter</button></div></div>
-  <div class="card"><img src="IMG_2837.jpeg"><div class="card-body"><div class="name">Arsenal Domicile</div><div class="price">7 000 FCFA</div><button class="btn-cart" onclick="ajouter('Arsenal Domicile',7000,'IMG_2837.jpeg')">Ajouter</button></div></div>
-  <div class="card"><img src="IMG_2836.jpeg"><div class="card-body"><div class="name">Liverpool Exterieur</div><div class="price">7 000 FCFA</div><button class="btn-cart" onclick="ajouter('Liverpool Exterieur',7000,'IMG_2836.jpeg')">Ajouter</button></div></div>
-  <div class="card"><img src="IMG_2835.jpeg"><div class="card-body"><div class="name">Man United Domicile</div><div class="price">7 000 FCFA</div><button class="btn-cart" onclick="ajouter('Man United Domicile',7000,'IMG_2835.jpeg')">Ajouter</button></div></div>
-  <div class="card"><img src="IMG_2834.jpeg"><div class="card-body"><div class="name">Bayern Domicile</div><div class="price">7 000 FCFA</div><button class="btn-cart" onclick="ajouter('Bayern Domicile',7000,'IMG_2834.jpeg')">Ajouter</button></div></div>
-  <div class="card"><img src="IMG_2833.jpeg"><div class="card-body"><div class="name">Barça Domicile</div><div class="price">7 000 FCFA</div><button class="btn-cart" onclick="ajouter('Barça Domicile',7000,'IMG_2833.jpeg')">Ajouter</button></div></div>
-  <div class="card"><img src="IMG_2832.jpeg"><div class="card-body"><div class="name">Real Madrid Domicile</div><div class="price">7 000 FCFA</div><button class="btn-cart" onclick="ajouter('Real Madrid Domicile',7000,'IMG_2832.jpeg')">Ajouter</button></div></div>
-  <div class="card"><img src="IMG_2841.jpeg"><div class="card-body"><div class="name">OM Exterieur</div><div class="price">7 000 FCFA</div><button class="btn-cart" onclick="ajouter('OM Exterieur',7000,'IMG_2841.jpeg')">Ajouter</button></div></div>
-</div></div>
+<div class="container"><div class="grid" id="produits"></div></div>
 
-<!-- FORMULAIRE COMPLET -->
-<div class="form-section">
-  <div class="form-title">
-    <small>PROPOSITION</small>
-    <h2>Formulaire de<br>proposition</h2>
-  </div>
-  <div class="form-box">
-    <div class="form-row">
-      <div><label>VOTRE NOM</label><input id="nom" placeholder="Bocar"></div>
-      <div><label>WHATSAPP</label><input id="tel" placeholder="+223 70"></div>
-    </div>
-    <label>NOM DU PRODUIT RECHERCHÉ *</label>
-    <input id="produit" placeholder="Ex: Maillot Real Madrid 2026" style="margin-bottom:15px">
-    
-    <div class="form-row">
-      <div><label>CATÉGORIE *</label>
-        <select id="categorie">
-          <option>Sélectionner</option>
-          <option>Club Européen</option>
-          <option>Équipe Nationale</option>
-          <option>Retro/Vintage</option>
-        </select>
-      </div>
-      <div><label>MARQUE / CLUB</label><input id="marque" placeholder="Ex: Real Madrid"></div>
-    </div>
-    
-    <label>DESCRIPTION / BESOIN PRÉCIS</label>
-    <textarea id="desc" rows="3" placeholder="Détails : couleur, taille, version, flocage..."></textarea>
-    
-    <div class="form-row">
-      <div><label>BUDGET ESTIMÉ (FCFA)</label><input id="budget" placeholder="Ex: 7000"></div>
-      <div><label>IMAGE DE RÉFÉRENCE (OPTIONNEL)</label>
-        <div class="upload" onclick="alert('Envoie moi la photo sur WhatsApp 72 03 96 75')">
-          ⬆️ AJOUTER UNE IMAGE
-          <small>Aucune image sélectionnée.</small>
-        </div>
-      </div>
-    </div>
-    
-    <button class="btn-send" onclick="envoyerProposition()">Envoyer ma demande</button>
-    <p class="note">Votre demande sera traitée sous 24h. Vous serez contacté par WhatsApp si vous avez laissé votre numéro.</p>
-  </div>
+<div class="btn-finaliser" onclick="ouvrirPanier()">
+  <span>●</span>
+  Finaliser - <span id="total">0</span> FCFA ( <span id="compteur">0</span> )
 </div>
-
-<div style="padding:20px">
-  <div class="contact-card"><div class="whats">🟢</div><div><small style="color:#999">WHATSAPP</small><br><b>+223 72 03 96 75</b><br><small>Réponse < 30 min</small></div></div>
-  <div class="contact-card"><div class="snap">👻</div><div><small style="color:#999">SNAPCHAT</small><br><b>@bocar_yarra22</b><br><small>Contact direct</small></div></div>
-</div>
-
-<button class="btn-commander" onclick="ouvrirPanier()">🟢 Finaliser - <span id="total">0</span> FCFA (<span class="compteur" id="compteur">0</span>)</button>
+<div class="site-link">boubacaryarra2-collab.github.io</div>
 
 <!-- POPUP FINALISER -->
-<div id="popupFinaliser" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.7); z-index:1000; overflow-y:auto;">
-  <div style="background:#F5F2EB; max-width:500px; margin:40px auto; padding:25px; border-radius:20px;">
-    <h2 style="color:#2F3E46;">Finaliser</h2>
+<div id="popupFinaliser">
+  <div class="popup-content">
+    <h2>Finaliser</h2>
     <div id="panierItems"></div>
-    <h3 style="text-align:right; color:#D4A574;">Total: <span id="totalPopup">0</span> FCFA</h3>
+    <div class="total">Total: <span id="totalPopup">0</span> FCFA</div>
     
-    <label style="font-weight:bold; font-size:12px;">VOTRE NOM</label>
-    <input id="nomFinal" type="text" placeholder="Ton nom" style="width:100%; padding:12px; margin:8px 0 15px; border:1px solid #ddd; border-radius:8px;">
+    <label>VOTRE NOM</label>
+    <input id="nomFinal" placeholder="Bocar">
     
-    <label style="font-weight:bold; font-size:12px;">TÉLÉPHONE</label>
-    <input id="telFinal" type="tel" placeholder="+223..." style="width:100%; padding:12px; margin:8px 0 15px; border:1px solid #ddd; border-radius:8px;">
+    <label>TÉLÉPHONE</label>
+    <input id="telFinal" placeholder="72039675" style="background:#FEF9C3;border-color:#FDE047">
     
-    <label style="font-weight:bold; font-size:12px;">ADRESSE DE LIVRAISON (OPTIONNEL)</label>
-    <input id="adresseFinal" type="text" placeholder="Djelibougou" style="width:100%; padding:12px; margin:8px 0 15px; border:1px solid #ddd; border-radius:8px;">
+    <label>ADRESSE DE LIVRAISON (OPTIONNEL)</label>
+    <input id="adresseFinal" placeholder="Djelibougou">
     
-    <label style="font-weight:bold; font-size:12px;">MODE DE PAIEMENT</label>
-    <div style="padding:15px; border:1px solid #ddd; border-radius:8px; margin:8px 0 15px; background:white;">
-      <b>MODE SÉLECTIONNÉ :</b> WhatsApp <span style="color:green;">Disponible</span><br>
-      <small style="color:#999">Wave, Orange Money, Moov Money: Bientôt disponible</small>
+    <label>MODE DE PAIEMENT</label>
+    <div class="mode-paiement">
+      <div class="mode-titre">MODE SÉLECTIONNÉ : WhatsApp <span class="dispo">Disponible</span></div>
+      <div class="mode-note">Wave, Orange Money, Moov Money: Bientôt disponible</div>
     </div>
     
-    <button onclick="validerCommande()" style="width:100%; background:#D4A574; color:#000; padding:15px; border:none; border-radius:10px; font-size:18px; font-weight:bold;">Payer</button>
-    <button onclick="fermerPanier()" style="width:100%; background:#ccc; padding:10px; border:none; border-radius:10px; margin-top:8px;">Fermer</button>
+    <button class="btn-payer" onclick="validerCommande()">Payer</button>
+    <button class="btn-fermer" onclick="fermerPanier()">Fermer</button>
   </div>
 </div>
 
 <script>
 let panier=[];
+
+const produits = [
+  {nom:"Bayern Edition", prix:7000, img:"IMG_2840.jpeg", stock:5, desc:"Maillot édition spéciale Bayern Munich"},
+  {nom:"PSG Exterieur", prix:7000, img:"IMG_2844.jpeg", stock:0, desc:"Maillot extérieur PSG saison 24/25"},
+  {nom:"Man United 3eme", prix:7000, img:"IMG_2843.jpeg", stock:3, desc:"3ème maillot Manchester United"},
+  {nom:"Arsenal Domicile", prix:7000, img:"IMG_2837.jpeg", stock:8, desc:"Maillot domicile Arsenal 24/25"},
+  {nom:"Liverpool Exterieur", prix:7000, img:"IMG_2836.jpeg", stock:2, desc:"Maillot extérieur Liverpool"},
+  {nom:"Man United Domicile", prix:7000, img:"IMG_2835.jpeg", stock:0, desc:"Maillot domicile Manchester United"},
+  {nom:"Bayern Domicile", prix:7000, img:"IMG_2834.jpeg", stock:6, desc:"Maillot domicile Bayern Munich"},
+  {nom:"Barça Domicile", prix:7000, img:"IMG_2833.jpeg", stock:4, desc:"Maillot domicile FC Barcelone"},
+  {nom:"Real Madrid Domicile", prix:7000, img:"IMG_2832.jpeg", stock:1, desc:"Maillot domicile Real Madrid"},
+  {nom:"OM Exterieur", prix:7000, img:"IMG_2841.jpeg", stock:0, desc:"Maillot extérieur Olympique Marseille"}
+];
+
+function afficherProduits(){
+  let html='';
+  produits.forEach(p=>{
+    html+=`<div class="card">
+      <img src="${p.img}">
+      <div class="card-body">
+        <div class="categorie">MAILLOT PREMIUM</div>
+        ${p.stock>0?'<div class="stock-badge">● En stock</div>':''}
+        <div class="name">${p.nom}</div>
+        <div class="desc">${p.desc}</div>
+        <div class="price">${p.prix.toLocaleString()} FCFA</div>
+        <button class="btn-cart" onclick="ajouter('${p.nom}',${p.prix},'${p.img}')" ${p.stock==0?'disabled':''}>
+          ${p.stock>0?'AJOUTER AU PANIER':'RUPTURE'}
+        </button>
+      </div>
+    </div>`;
+  });
+  document.getElementById('produits').innerHTML=html;
+}
+afficherProduits();
+
 function ajouter(nom,prix,img){
   panier.push({nom,prix,img});
   document.getElementById('compteur').innerText=panier.length;
   document.getElementById('compteurHeader').innerText=panier.length;
   let total=panier.reduce((s,i)=>s+i.prix,0);
   document.getElementById('total').innerText=total.toLocaleString();
-  alert(nom+" ajouté au panier ✅");
 }
 
 function ouvrirPanier(){
@@ -163,10 +186,13 @@ function ouvrirPanier(){
   document.getElementById('popupFinaliser').style.display='block';
   let html=''; let total=0;
   panier.forEach(item=>{
-    html+=`<div style="display:flex; gap:10px; margin:10px 0; padding:10px; background:white; border-radius:10px;">
-      <img src="${item.img}" width="60" style="border-radius:8px;">
-      <div><b>${item.nom}</b><br>Quantité: 1</div>
-      <div style="margin-left:auto; color:#D4A574; font-weight:bold;">${item.prix.toLocaleString()} FCFA</div>
+    html+=`<div class="panier-item">
+      <img src="${item.img}">
+      <div class="panier-info">
+        <div class="panier-nom">${item.nom}</div>
+        <div class="panier-qte">Quantité: 1</div>
+      </div>
+      <div class="panier-prix">${item.prix.toLocaleString()} FCFA</div>
     </div>`;
     total+=item.prix;
   });
@@ -174,38 +200,20 @@ function ouvrirPanier(){
   document.getElementById('totalPopup').innerText=total.toLocaleString();
 }
 
-function fermerPanier(){
-  document.getElementById('popupFinaliser').style.display='none';
-}
+function fermerPanier(){document.getElementById('popupFinaliser').style.display='none';}
 
 function validerCommande(){
   let nom=document.getElementById('nomFinal').value;
   let tel=document.getElementById('telFinal').value;
   let adresse=document.getElementById('adresseFinal').value;
   let total=panier.reduce((s,i)=>s+i.prix,0);
-  
-  if(!nom || !tel){alert("Remplis nom et téléphone");return;}
-  
-  let msg="COMMANDE INFINITY DRIP by Bocar%0A%0A";
+  if(!nom||!tel){alert("Remplis nom et téléphone");return;}
+  let msg="🔥 COMMANDE INFINITY DRIP by Bocar 🔥%0A%0A";
   panier.forEach((i,idx)=>{msg+=(idx+1)+". "+i.nom+" - "+i.prix.toLocaleString()+" FCFA%0A";});
   msg+="TOTAL : "+total.toLocaleString()+" FCFA%0A%0A";
-  msg+="Nom: "+nom+"%0ATel: "+tel+"%0AAdresse: "+adresse+"%0APaiement: WhatsApp";
+  msg+="Nom: "+nom+"%0ATel: "+tel+"%0AAdresse: "+adresse+"%0AMode: WhatsApp";
   window.open("https://wa.me/22372039675?text="+msg,'_blank');
   fermerPanier();
-}
-
-function envoyerProposition(){
-  let nom=document.getElementById('nom').value;
-  let tel=document.getElementById('tel').value;
-  let produit=document.getElementById('produit').value;
-  let cat=document.getElementById('categorie').value;
-  let marque=document.getElementById('marque').value;
-  let desc=document.getElementById('desc').value;
-  let budget=document.getElementById('budget').value;
-  if(produit==""){alert("Mets le nom du produit");return;}
-  let msg="NOUVELLE PROPOSITION INFINITY DRIP by Bocar%0A%0A";
-  msg+="Nom: "+nom+"%0AWhatsApp: "+tel+"%0AProduit: "+produit+"%0ACatégorie: "+cat+"%0AMarque: "+marque+"%0ADescription: "+desc+"%0ABudget: "+budget+" FCFA";
-  window.open("https://wa.me/22372039675?text="+msg,'_blank');
 }
 </script>
 </body>
