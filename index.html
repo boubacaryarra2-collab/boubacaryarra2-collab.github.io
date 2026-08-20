@@ -3,79 +3,69 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>INFINITY DRIP STORE by Bocar</title>
+<title>INFINITY DRIP by Bocar</title>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800;900&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
-
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Outfit', sans-serif}
-body{background:#F5F7FA;padding-bottom:90px;color:#1A1A1A} /* FOND BLANC BLEU */
+body{background:#F5F5F5;padding-bottom:110px} /* FOND GRIS CLAIR */
 
-.header{position:sticky;top:0;background:linear-gradient(90deg,#2563EB 0%, #1D4ED8 100%);padding:14px 16px;display:flex;justify-content:space-between;align-items:center;z-index:99;box-shadow:0 2px 10px rgba(37,99,235,0.2)} /* HEADER BLEU */
-.logo-box{display:flex;align-items:center;gap:8px}
-.logo{background:#fff;color:#2563EB;width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:12px;font-family:'Montserrat', sans-serif}
-.header b{font-family:'Montserrat', sans-serif;font-weight:800;font-size:16px;color:#fff}
-.header small{color:#BFDBFE}
+.top-header{position:sticky;top:0;background:#fff;padding:12px 16px;display:flex;justify-content:space-between;align-items:center;z-index:99;box-shadow:0 2px 8px rgba(0,0,0,0.05);border-radius:0 0 16px 16px}
+.logo-box{display:flex;align-items:center;gap:10px}
+.logo{background:#E8DCC8;color:#000;width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:13px;font-family:'Montserrat', sans-serif}
+.header-text b{font-family:'Montserrat', sans-serif;font-weight:800;font-size:16px;color:#000}
+.header-text small{color:#C49B5A;font-weight:600;font-size:12px}
+.cart-icon{font-size:18px;font-weight:800;color:#000}
 
-.hero{background:linear-gradient(135deg,#2563EB 0%, #1E40AF 100%); padding:70px 20px 50px;text-align:center;color:#fff} /* HERO BLEU */
-.hero small{color:#BFDBFE;letter-spacing:3px;font-size:11px;font-weight:700}
-.hero h1{font-size:28px;margin:15px 0;line-height:1.2;font-family:'Montserrat', sans-serif;font-weight:900;text-transform:uppercase}
-.hero h1 span{color:#fff}
-.btn-main{background:#fff;color:#2563EB;border:none;padding:15px 32px;border-radius:12px;font-weight:900;font-family:'Montserrat', sans-serif;font-size:14px;box-shadow:0 4px 15px rgba(0,0,0,0.1)}
+.banner{background:#000;padding:40px 20px;text-align:center;color:#fff}
+.banner h1{font-family:'Montserrat', sans-serif;font-weight:900;font-size:24px;text-transform:uppercase}
 
-.container{padding:20px 12px;max-width:650px;margin:0 auto}
+.container{padding:16px 12px;max-width:650px;margin:0 auto}
 .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
-.card{background:#fff;border-radius:16px;overflow:hidden;border:1px solid #E5E7EB;box-shadow:0 2px 8px rgba(0,0,0,0.04)} /* CARD BLANCHE */
-.card:hover{border-color:#2563EB;transform:translateY(-3px)}
-.card img{width:100%;height:180px;object-fit:cover}
+.card{background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,0.06)} /* CARD BLANCHE */
+.card img{width:100%;height:190px;object-fit:cover;border-radius:16px 16px 0 0}
 .card-body{padding:12px 14px}
-.categorie{font-size:10px;color:#2563EB;font-weight:700;letter-spacing:1px;margin-bottom:5px;text-transform:uppercase}
-.name{font-weight:800;font-size:15px;margin-bottom:5px;font-family:'Montserrat', sans-serif;color:#1A1A1A}
-.desc{font-size:12px;color:#6B7280;line-height:1.4;margin-bottom:8px;height:32px;overflow:hidden}
-.price{color:#2563EB;font-size:16px;font-weight:800;margin-bottom:10px}
-.btn-cart{width:100%;background:#2563EB;color:#fff;border:none;padding:11px;border-radius:10px;font-weight:800;font-size:13px;font-family:'Montserrat', sans-serif;transition:0.2s}
-.btn-cart:active{background:#1D4ED8;transform:scale(0.96)}
-.btn-cart:disabled{background:#D1D5DB;color:#9CA3AF}
+.name{font-weight:800;font-size:15px;margin-bottom:5px;font-family:'Montserrat', sans-serif;color:#000}
+.price{color:#C49B5A;font-size:16px;font-weight:800;margin-bottom:10px} /* PRIX BEIGE */
+.btn-cart{width:100%;background:#D4B896;color:#000;border:none;padding:12px;border-radius:12px;font-weight:800;font-size:14px;font-family:'Montserrat', sans-serif} /* BOUTON BEIGE */
+.btn-cart:active{background:#C49B5A;transform:scale(0.97)}
 
-.stock-badge{display:inline-flex;align-items:center;gap:5px;font-size:11px;color:#059669;font-weight:700;background:#D1FAE5;padding:4px 10px;border-radius:20px;margin-bottom:6px;border:1px solid #10B981}
+.btn-finaliser{position:fixed;bottom:40px;left:0;right:0;background:#25D366;color:#fff;padding:16px;display:flex;align-items:center;justify-content:center;gap:8px;z-index:200;font-weight:900;font-size:16px;font-family:'Montserrat', sans-serif}
+.btn-finaliser .dot{width:10px;height:10px;background:#fff;border-radius:50%}
+.badge{ background:#fff;color:#25D366;border-radius:50%;width:22px;height:22px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:900;margin-left:4px}
 
-.btn-finaliser{position:fixed;bottom:0;left:0;right:0;background:#25D366;color:#fff;padding:16px 16px;display:flex;align-items:center;justify-content:center;gap:8px;z-index:200;font-weight:900;font-size:16px;font-family:'Montserrat', sans-serif}
-.btn-finaliser span{background:#fff;color:#25D366;border-radius:50%;width:24px;height:24px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:900}
-.site-link{position:fixed;bottom:65px;left:50%;transform:translateX(-50%);background:#1E3A8A;color:#fff;padding:8px 16px;border-radius:20px;font-size:12px;z-index:200;font-weight:600}
+.site-link{position:fixed;bottom:8px;left:50%;transform:translateX(-50%);background:#1A5F2A;color:#fff;padding:8px 16px;border-radius:20px;font-size:12px;z-index:200;font-weight:600}
 
 #popupFinaliser{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.6);z-index:1000;overflow-y:auto}
-.popup-content{background:#fff;max-width:420px;margin:60px auto;padding:20px;border-radius:20px;color:#000;border-top:4px solid #2563EB}
-.popup-content h2{font-family:'Montserrat', sans-serif;font-weight:900;font-size:22px;margin-bottom:15px;color:#2563EB}
-.panier-item{display:flex;gap:12px;padding:12px;background:#F3F4F6;border-radius:12px;margin-bottom:10px}
+.popup-content{background:#fff;max-width:420px;margin:60px auto;padding:20px;border-radius:20px;color:#000}
+.popup-content h2{font-family:'Montserrat', sans-serif;font-weight:900;font-size:22px;margin-bottom:15px;color:#000}
+.panier-item{display:flex;gap:12px;padding:12px;background:#F9F9F9;border-radius:12px;margin-bottom:10px}
 .panier-item img{width:60px;height:60px;border-radius:10px;object-fit:cover}
-.panier-prix{font-weight:700;font-size:15px;color:#2563EB;margin-left:auto}
-.total{font-weight:800;font-size:18px;color:#2563EB;text-align:right;margin:15px 0}
-.popup-content label{font-weight:800;font-size:11px;letter-spacing:0.5px;color:#6B7280;display:block;margin-top:12px;margin-bottom:6px}
-.popup-content input{background:#F9FAFB;border:1px solid #D1D5DB;color:#000;width:100%;padding:14px;border-radius:10px;font-size:14px}
-.popup-content input:focus{border-color:#2563EB;outline:none}
-.mode-paiement{background:#EFF6FF;padding:14px;border-radius:10px;margin:15px 0;border:1px solid #BFDBFE}
-.mode-titre{font-weight:800;font-size:14px;margin-bottom:4px;color:#1E40AF}
-.btn-payer{width:100%;background:#2563EB;color:#fff;padding:16px;border:none;border-radius:12px;font-size:17px;font-weight:900;font-family:'Montserrat', sans-serif;margin-top:10px}
-.btn-fermer{width:100%;background:#F3F4F6;color:#2563EB;padding:12px;border:none;border-radius:12px;margin-top:8px;font-weight:700}
+.panier-prix{font-weight:700;font-size:15px;color:#C49B5A;margin-left:auto}
+.total{font-weight:800;font-size:18px;color:#C49B5A;text-align:right;margin:15px 0}
+.popup-content input{background:#F9F9F9;border:1px solid #E5E5E5;color:#000;width:100%;padding:14px;border-radius:10px;font-size:14px;margin:6px 0 12px}
+.btn-payer{width:100%;background:#25D366;color:#fff;padding:16px;border:none;border-radius:12px;font-size:17px;font-weight:900;font-family:'Montserrat', sans-serif;margin-top:10px}
+.btn-fermer{width:100%;background:#F3F3F3;color:#000;padding:12px;border:none;border-radius:12px;margin-top:8px;font-weight:700}
 </style>
 </head>
 <body>
 
-<div class="header">
-  <div class="logo-box"><div class="logo">IDS</div><div><b>INFINITY DRIP</b><br><small>by Bocar</small></div></div>
-  <div style="cursor:pointer;font-weight:800;color:#fff" onclick="ouvrirPanier()"><span id="compteurHeader">0</span> 🛒</div>
+<div class="top-header">
+  <div class="logo-box">
+    <div class="logo">IDS</div>
+    <div class="header-text"><b>INFINITY DRIP</b><br><small>by Bocar</small></div>
+  </div>
+  <div class="cart-icon" onclick="ouvrirPanier()"><span id="compteurHeader">0</span> 🛒</div>
 </div>
 
-<div class="hero">
-  <small>INFINITY DRIP STORE</small>
-  <h1><span>BY BOCAR</span><br>MAILLOTS FOOTBALL<br>PREMIUM QUALITÉ</h1>
-  <button class="btn-main">VOIR LA COLLECTION</button>
+<div class="banner">
+  <h1>PREMIUM QUALITÉ</h1>
 </div>
 
 <div class="container"><div class="grid" id="produits"></div></div>
 
 <div class="btn-finaliser" onclick="ouvrirPanier()">
-  <span>●</span>
-  Finaliser - <span id="total">0</span> FCFA ( <span id="compteur">0</span> )
+  <span class="dot"></span>
+  Finaliser - <span id="total">0</span> FCFA ( <span class="badge" id="compteur">0</span> )
 </div>
 <div class="site-link">boubacaryarra2-collab.github.io</div>
 
@@ -84,16 +74,10 @@ body{background:#F5F7FA;padding-bottom:90px;color:#1A1A1A} /* FOND BLANC BLEU */
     <h2>Finaliser</h2>
     <div id="panierItems"></div>
     <div class="total">Total: <span id="totalPopup">0</span> FCFA</div>
-    <label>VOTRE NOM</label>
-    <input id="nomFinal" placeholder="Bocar">
-    <label>TÉLÉPHONE</label>
-    <input id="telFinal" placeholder="72039675" style="background:#FFFBEB;border-color:#FDE047">
-    <label>ADRESSE DE LIVRAISON</label>
-    <input id="adresseFinal" placeholder="Djelibougou">
-    <div class="mode-paiement">
-      <div class="mode-titre">MODE : WhatsApp <span style="color:#059669">Disponible</span></div>
-    </div>
-    <button class="btn-payer" onclick="validerCommande()">Payer</button>
+    <label><b>VOTRE NOM</b></label><input id="nomFinal" placeholder="Bocar">
+    <label><b>TÉLÉPHONE</b></label><input id="telFinal" placeholder="72039675">
+    <label><b>ADRESSE</b></label><input id="adresseFinal" placeholder="Djelibougou">
+    <button class="btn-payer" onclick="validerCommande()">Commander sur WhatsApp</button>
     <button class="btn-fermer" onclick="fermerPanier()">Fermer</button>
   </div>
 </div>
@@ -101,16 +85,16 @@ body{background:#F5F7FA;padding-bottom:90px;color:#1A1A1A} /* FOND BLANC BLEU */
 <script>
 let panier=[];
 const produits = [
-  {nom:"Bayern Edition", prix:7000, img:"IMG_2840.jpeg", stock:5},
-  {nom:"PSG Exterieur", prix:7000, img:"IMG_2844.jpeg", stock:0},
-  {nom:"Man United 3eme", prix:7000, img:"IMG_2843.jpeg", stock:3},
-  {nom:"Arsenal Domicile", prix:7000, img:"IMG_2837.jpeg", stock:8},
-  {nom:"Liverpool Exterieur", prix:7000, img:"IMG_2836.jpeg", stock:2},
-  {nom:"Man United Domicile", prix:7000, img:"IMG_2835.jpeg", stock:0},
-  {nom:"Bayern Domicile", prix:7000, img:"IMG_2834.jpeg", stock:6},
-  {nom:"Barça Domicile", prix:7000, img:"IMG_2833.jpeg", stock:4},
-  {nom:"Real Madrid Domicile", prix:7000, img:"IMG_2832.jpeg", stock:1},
-  {nom:"OM Exterieur", prix:7000, img:"IMG_2841.jpeg", stock:0}
+  {nom:"Bayern Edition", prix:7000, img:"IMG_2840.jpeg"},
+  {nom:"PSG Exterieur", prix:7000, img:"IMG_2844.jpeg"},
+  {nom:"Man United 3eme", prix:7000, img:"IMG_2843.jpeg"},
+  {nom:"Arsenal Domicile", prix:7000, img:"IMG_2837.jpeg"},
+  {nom:"Liverpool Exterieur", prix:7000, img:"IMG_2836.jpeg"},
+  {nom:"Man United Domicile", prix:7000, img:"IMG_2835.jpeg"},
+  {nom:"Bayern Domicile", prix:7000, img:"IMG_2834.jpeg"},
+  {nom:"Barça Domicile", prix:7000, img:"IMG_2833.jpeg"},
+  {nom:"Real Madrid Domicile", prix:7000, img:"IMG_2832.jpeg"},
+  {nom:"OM Exterieur", prix:7000, img:"IMG_2841.jpeg"}
 ];
 function afficherProduits(){
   let html='';
@@ -118,13 +102,9 @@ function afficherProduits(){
     html+=`<div class="card">
       <img src="${p.img}">
       <div class="card-body">
-        <div class="categorie">MAILLOT PREMIUM</div>
-        ${p.stock>0?'<div class="stock-badge">● En stock</div>':''}
         <div class="name">${p.nom}</div>
         <div class="price">${p.prix.toLocaleString()} FCFA</div>
-        <button class="btn-cart" onclick="ajouter('${p.nom}',${p.prix},'${p.img}')" ${p.stock==0?'disabled':''}>
-          ${p.stock>0?'AJOUTER':'RUPTURE'}
-        </button>
+        <button class="btn-cart" onclick="ajouter('${p.nom}',${p.prix},'${p.img}')">Ajouter</button>
       </div>
     </div>`;
   });
