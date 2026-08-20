@@ -71,6 +71,7 @@ function ajouterPanier(nom, prix){
   document.getElementById('compteur').innerText = panier.length;
   let total = panier.reduce((sum, item) => sum + item.prix, 0);
   document.getElementById('total').innerText = total.toLocaleString();
+  
   alert("✅ " + nom + " ajouté")
 }
 function commander(){
