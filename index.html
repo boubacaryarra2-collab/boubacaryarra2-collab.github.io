@@ -8,49 +8,40 @@
     * {margin: 0; padding: 0; box-sizing: border-box;}
     body {background: #f5f5f5; font-family: Arial, sans-serif; padding-bottom: 70px;}
     
-    header {background: #fff; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 10; box-shadow: 0 2px 5px rgba(0,0,0,0.1);}
+    header {background: #fff; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 10;}
     .logo {font-size: 16px; font-weight: bold;}
-    .logo span {color: #D4B78F;}
-    .panier-icon {position: relative; font-size: 22px; cursor: pointer;}
+    .logo span {color: #C8A882;}
+    .panier-icon {position: relative; font-size: 24px; cursor: pointer;}
     .panier-icon span {background: #FFA500; color: #000; border-radius: 50%; padding: 2px 6px; font-size: 11px; font-weight: bold; position: absolute; top: -5px; right: -8px;}
 
     .produits {display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; max-width: 500px; margin: 15px auto; padding: 0 10px;}
-    .produit {background: #fff; border-radius: 12px; padding: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);}
-    .produit img {width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 8px;}
-    .produit h3 {font-size: 13px; margin-bottom: 4px; font-weight: bold; height: 32px; overflow: hidden;}
+    .produit {background: #fff; border-radius: 12px; padding: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.08);}
+    .produit img {width: 100%; height: 180px; object-fit: cover; border-radius: 10px; margin-bottom: 8px;}
+    .produit h3 {font-size: 13px; margin-bottom: 4px; font-weight: bold;}
     .prix {font-size: 14px; font-weight: bold; color: #C8A882; margin-bottom: 8px;}
     .btn {background: #C8A882; color: #000; padding: 10px; border: none; border-radius: 8px; width: 100%; cursor: pointer; font-weight: bold; font-size: 13px;}
 
     .barre-verte {background: #25D366; height: 50px; width: 95%; position: fixed; bottom: 10px; left: 2.5%; border-radius: 25px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 16px; cursor: pointer;}
 
-    /* POPUP PANIER */
-    .popup {display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 999; overflow-y: auto;}
-    .popup-content {background: #fff; max-width: 500px; margin: 20px auto; border-radius: 20px 20px 0 0; padding: 20px; min-height: 90vh;}
+    /* POPUP */
+    .popup {display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 999; overflow-y: auto;}
+    .popup-content {background: #fff; max-width: 500px; margin: 20px auto; border-radius: 20px; padding: 20px; min-height: 90vh;}
     .popup-header {display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;}
     .popup-header h2 {font-size: 20px;}
+    .subtitle {color: #C8A882; font-size: 12px; font-weight: bold;}
     .close-btn {font-size: 24px; background: #f0f0f0; border: none; border-radius: 50%; width: 30px; height: 30px; cursor: pointer;}
-    .subtitle {color: #C8A882; font-size: 12px; font-weight: bold; margin-bottom: 10px;}
-
     .panier-item {display: flex; gap: 10px; background: #f9f9f9; padding: 10px; border-radius: 10px; margin-bottom: 10px;}
     .panier-item img {width: 60px; height: 60px; border-radius: 8px; object-fit: cover;}
-    .panier-info {flex: 1;}
-    .panier-info h4 {font-size: 13px; margin-bottom: 3px;}
-    .panier-info p {font-size: 12px; color: #666;}
-    .panier-prix {font-weight: bold; color: #C8A882;}
     .total {display: flex; justify-content: space-between; font-weight: bold; font-size: 16px; margin: 15px 0; padding-top: 10px; border-top: 1px solid #ddd;}
-
     .form-group {margin-bottom: 15px;}
     .form-group label {font-size: 11px; color: #666; font-weight: bold; display: block; margin-bottom: 5px;}
     .form-group input {width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px; font-size: 14px;}
-
-    /* PAGE PAIEMENT */
     .paiement-grid {display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px;}
     .paiement-option {background: #f9f9f9; border: 2px solid #eee; border-radius: 12px; padding: 20px 10px; text-align: center; cursor: pointer;}
     .paiement-option.active {border-color: #25D366;}
-    .paiement-option img {width: 40px; height: 40px; margin-bottom: 8px;}
-    .paiement-option h4 {font-size: 14px; margin-bottom: 4px;}
+    .paiement-option h4 {font-size: 14px;}
     .paiement-option p {font-size: 11px; color: #999;}
-    .paiement-option .dispo {color: #25D366; font-weight: bold;}
+    .dispo {color: #25D366; font-weight: bold;}
     .btn-valider {background: #25D366; color: #fff; width: 100%; padding: 15px; border: none; border-radius: 10px; font-weight: bold; font-size: 16px; margin-top: 20px; cursor: pointer;}
   </style>
 </head>
@@ -60,134 +51,139 @@
     <div class="panier-icon" onclick="ouvrirPanier()">🛒<span id="compteur">0</span></div>
   </header>
   
-  <div class="produits" id="produits">
-    <!-- TES 11 PRODUITS ICI - J'AI MIS 3 EXEMPLES -->
+  <div class="produits">
+    <!-- 1 -->
+    <div class="produit">
+      <img src="985ae576-9e47-4cbb-a713-ebc1e695e5d8.jpeg">
+      <h3>Crocs Spiderman Rouge</h3>
+      <p class="prix">22 000 FCFA</p>
+      <button class="btn" onclick="ajouterPanier('Crocs Spiderman Rouge', 22000, '985ae576-9e47-4cbb-a713-ebc1e695e5d8.jpeg')">Ajouter au panier</button>
+    </div>
+    <!-- 2 -->
+    <div class="produit">
+      <img src="IMG_2842.jpeg">
+      <h3>Maillot Real Madrid Rose</h3>
+      <p class="prix">7 000 FCFA</p>
+      <button class="btn" onclick="ajouterPanier('Maillot Real Madrid Rose', 7000, 'IMG_2842.jpeg')">Ajouter au panier</button>
+    </div>
+    <!-- 3 -->
+    <div class="produit">
+      <img src="IMG_2833.jpeg">
+      <h3>Maillot Bayern Munich Blanc</h3>
+      <p class="prix">7 000 FCFA</p>
+      <button class="btn" onclick="ajouterPanier('Maillot Bayern Munich Blanc', 7000, 'IMG_2833.jpeg')">Ajouter au panier</button>
+    </div>
+    <!-- 4 -->
+    <div class="produit">
+      <img src="9493a5a7-b9ab-44b6-96d9-8e30a39b1a4b.jpeg">
+      <h3>T-shirt Adidas 3 Bandes</h3>
+      <p class="prix">9 000 FCFA</p>
+      <button class="btn" onclick="ajouterPanier('T-shirt Adidas 3 Bandes', 9000, '9493a5a7-b9ab-44b6-96d9-8e30a39b1a4b.jpeg')">Ajouter au panier</button>
+    </div>
+    <!-- 5 -->
+    <div class="produit">
+      <img src="0cca44a9-5f8d-40da-a74b-0cd79ae5e17d.jpeg">
+      <h3>Survêtement Nike Vert</h3>
+      <p class="prix">35 000 FCFA</p>
+      <button class="btn" onclick="ajouterPanier('Survetement Nike Vert', 35000, '0cca44a9-5f8d-40da-a74b-0cd79ae5e17d.jpeg')">Ajouter au panier</button>
+    </div>
+    <!-- 6 -->
+    <div class="produit">
+      <img src="6b33879c-e552-4085-9066-f5d5770b523d.jpeg">
+      <h3>Ensemble Lacoste Blanc</h3>
+      <p class="prix">35 000 FCFA</p>
+      <button class="btn" onclick="ajouterPanier('Ensemble Lacoste Blanc', 35000, '6b33879c-e552-4085-9066-f5d5770b523d.jpeg')">Ajouter au panier</button>
+    </div>
+    <!-- 7 -->
+    <div class="produit">
+      <img src="3a531805-1412-4646-92b1-2d47d23ffcdb.jpeg">
+      <h3>Ensemble Lacoste Bleu Marine</h3>
+      <p class="prix">35 000 FCFA</p>
+      <button class="btn" onclick="ajouterPanier('Ensemble Lacoste Bleu Marine', 35000, '3a531805-1412-4646-92b1-2d47d23ffcdb.jpeg')">Ajouter au panier</button>
+    </div>
+    <!-- 8 -->
+    <div class="produit">
+      <img src="bd88c702-0014-4607-bb4b-2c9c264077d1.jpeg">
+      <h3>Crocs Spiderman Noir</h3>
+      <p class="prix">22 000 FCFA</p>
+      <button class="btn" onclick="ajouterPanier('Crocs Spiderman Noir', 22000, 'bd88c702-0014-4607-bb4b-2c9c264077d1.jpeg')">Ajouter au panier</button>
+    </div>
+    <!-- 9 -->
     <div class="produit">
       <img src="IMG_2841.jpeg">
       <h3>Maillot PSG 2024 Domicile</h3>
       <p class="prix">7 000 FCFA</p>
       <button class="btn" onclick="ajouterPanier('Maillot PSG 2024 Domicile', 7000, 'IMG_2841.jpeg')">Ajouter au panier</button>
     </div>
-    <!-- COLLE ICI LES 10 AUTRES PRODUITS DU CODE PRECEDENT -->
+    <!-- 10 -->
+    <div class="produit">
+      <img src="IMG_2832.jpeg">
+      <h3>Maillot AC Milan 2024 Extérieur</h3>
+      <p class="prix">7 000 FCFA</p>
+      <button class="btn" onclick="ajouterPanier('Maillot AC Milan 2024 Exterieur', 7000, 'IMG_2832.jpeg')">Ajouter au panier</button>
+    </div>
+    <!-- 11 -->
+    <div class="produit">
+      <img src="IMG_2300.jpeg">
+      <h3>Ensemble Manchester United 2024</h3>
+      <p class="prix">30 000 FCFA</p>
+      <button class="btn" onclick="ajouterPanier('Ensemble Manchester United 2024', 30000, 'IMG_2300.jpeg')">Ajouter au panier</button>
+    </div>
   </div>
 
-  <div class="barre-verte" onclick="ouvrirPanier()">• Finaliser - <span id="totalBarre">0</span> FCFA</div>
+  <div class="barre-verte" onclick="ouvrirPanier()">• Finaliser - <span id="totalBarre">0</span>FCFA</div>
 
   <!-- POPUP -->
   <div class="popup" id="popupPanier">
     <div class="popup-content">
-      <!-- PAGE 1 : COMMANDE -->
       <div id="pageCommande">
         <div class="popup-header">
-          <div>
-            <div class="subtitle">COMMANDE</div>
-            <h2>Finaliser</h2>
-          </div>
+          <div><div class="subtitle">COMMANDE</div><h2>Finaliser</h2></div>
           <button class="close-btn" onclick="fermerPanier()">×</button>
         </div>
         <div id="listePanier"></div>
-        <div class="total">
-          <span>Total</span>
-          <span id="totalCommande">0 FCFA</span>
-        </div>
-        <div class="form-group">
-          <label>VOTRE NOM</label>
-          <input type="text" id="nomClient" placeholder="Ex: Yarra Market">
-        </div>
-        <div class="form-group">
-          <label>TÉLÉPHONE</label>
-          <input type="tel" id="telClient" placeholder="+223...">
-        </div>
-        <div class="form-group">
-          <label>ADRESSE DE LIVRAISON (OPTIONNEL)</label>
-          <input type="text" id="adresseClient" placeholder="Ex: Djelibougou">
-        </div>
+        <div class="total"><span>Total</span><span id="totalCommande">0 FCFA</span></div>
+        <div class="form-group"><label>VOTRE NOM</label><input type="text" id="nomClient"></div>
+        <div class="form-group"><label>TÉLÉPHONE</label><input type="tel" id="telClient"></div>
+        <div class="form-group"><label>ADRESSE DE LIVRAISON (OPTIONNEL)</label><input type="text" id="adresseClient"></div>
         <button class="btn-valider" onclick="allerPaiement()">Continuer vers le paiement</button>
       </div>
-
-      <!-- PAGE 2 : PAIEMENT -->
       <div id="pagePaiement" style="display: none;">
         <div class="popup-header">
-          <div>
-            <div class="subtitle">PAIEMENT</div>
-            <h2>Choisir un mode de paiement</h2>
-          </div>
+          <div><div class="subtitle">PAIEMENT</div><h2>Choisir un mode de paiement</h2></div>
           <button class="close-btn" onclick="fermerPanier()">×</button>
         </div>
         <div class="paiement-grid">
-          <div class="paiement-option">
-            <div>🌊</div>
-            <h4>Wave</h4>
-            <p>Bientôt disponible</p>
-          </div>
-          <div class="paiement-option">
-            <div>🟠</div>
-            <h4>Orange Money</h4>
-            <p>Bientôt disponible</p>
-          </div>
-          <div class="paiement-option">
-            <div>🔶</div>
-            <h4>Moov Money</h4>
-            <p>Bientôt disponible</p>
-          </div>
-          <div class="paiement-option active" onclick="payerWhatsApp()">
-            <div style="font-size: 40px; color: #25D366;">📱</div>
-            <h4>WhatsApp</h4>
-            <p class="dispo">Disponible</p>
-          </div>
+          <div class="paiement-option"><div>🌊</div><h4>Wave</h4><p>Bientôt disponible</p></div>
+          <div class="paiement-option"><div>🟠</div><h4>Orange Money</h4><p>Bientôt disponible</p></div>
+          <div class="paiement-option"><div>🔶</div><h4>Moov Money</h4><p>Bientôt disponible</p></div>
+          <div class="paiement-option active" onclick="payerWhatsApp()"><div style="font-size: 40px; color: #25D366;">📱</div><h4>WhatsApp</h4><p class="dispo">Disponible</p></div>
         </div>
       </div>
     </div>
   </div>
 
   <script>
-    let panier = []; 
-    let total = 0;
-
+    let panier = []; let total = 0;
     function ajouterPanier(nom, prix, img) {
-      panier.push({nom, prix, img}); 
-      total += prix;
+      panier.push({nom, prix, img}); total += prix;
       document.getElementById('compteur').innerHTML = panier.length;
       document.getElementById('totalBarre').innerHTML = total.toLocaleString();
     }
-
-    function ouvrirPanier() {
-      document.getElementById('popupPanier').style.display = 'block';
-      afficherPanier();
-    }
-    function fermerPanier() {
-      document.getElementById('popupPanier').style.display = 'none';
-      document.getElementById('pageCommande').style.display = 'block';
-      document.getElementById('pagePaiement').style.display = 'none';
-    }
+    function ouvrirPanier() {document.getElementById('popupPanier').style.display = 'block'; afficherPanier();}
+    function fermerPanier() {document.getElementById('popupPanier').style.display = 'none'; document.getElementById('pageCommande').style.display = 'block'; document.getElementById('pagePaiement').style.display = 'none';}
     function afficherPanier() {
-      let html = '';
-      panier.forEach(item => {
-        html += `<div class="panier-item">
-          <img src="${item.img}">
-          <div class="panier-info">
-            <h4>${item.nom}</h4>
-            <p>Quantité: 1</p>
-          </div>
-          <div class="panier-prix">${item.prix.toLocaleString()} FCFA</div>
-        </div>`;
+      let html = ''; panier.forEach(item => {
+        html += `<div class="panier-item"><img src="${item.img}"><div style="flex:1"><h4 style="font-size:13px">${item.nom}</h4><p style="font-size:12px;color:#666">Quantité: 1</p></div><div style="font-weight:bold;color:#C8A882">${item.prix.toLocaleString()} FCFA</div></div>`;
       });
       document.getElementById('listePanier').innerHTML = html;
       document.getElementById('totalCommande').innerHTML = total.toLocaleString() + ' FCFA';
     }
-    function allerPaiement() {
-      if(panier.length === 0) { alert('Votre panier est vide'); return; }
-      document.getElementById('pageCommande').style.display = 'none';
-      document.getElementById('pagePaiement').style.display = 'block';
-    }
+    function allerPaiement() {if(panier.length === 0) { alert('Votre panier est vide'); return; } document.getElementById('pageCommande').style.display = 'none'; document.getElementById('pagePaiement').style.display = 'block';}
     function payerWhatsApp() {
-      let nom = document.getElementById('nomClient').value;
-      let tel = document.getElementById('telClient').value;
-      let adresse = document.getElementById('adresseClient').value;
-      let message = `Nouvelle Commande INFINITY DRIP%0A%0A`;
-      panier.forEach(item => { message += `-${item.nom} : ${item.prix.toLocaleString()} FCFA%0A`; });
-      message += `%0ATotal: ${total.toLocaleString()} FCFA%0A%0A`;
-      message += `Nom: ${nom}%0ATel: ${tel}%0AAdresse: ${adresse}`;
+      let nom = document.getElementById('nomClient').value; let tel = document.getElementById('telClient').value; let adresse = document.getElementById('adresseClient').value;
+      let message = `Nouvelle Commande INFINITY DRIP%0A%0A`; panier.forEach(item => { message += `-${item.nom} : ${item.prix.toLocaleString()} FCFA%0A`; });
+      message += `%0ATotal: ${total.toLocaleString()} FCFA%0A%0ANom: ${nom}%0ATel: ${tel}%0AAdresse: ${adresse}`;
       window.open(`https://wa.me/22372039675?text=${message}`, '_blank');
     }
   </script>
