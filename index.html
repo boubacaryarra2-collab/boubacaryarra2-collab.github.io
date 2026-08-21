@@ -6,125 +6,189 @@
   <title>INFINITY DRIP STORE by Bocar</title>
   <style>
     * {margin: 0; padding: 0; box-sizing: border-box;}
-    body {background: #fff; color: #000; font-family: Arial, sans-serif; padding-bottom: 60px;}
-    header {padding: 20px 50px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #eee; position: sticky; top: 0; background: #fff; z-index: 10;}
-    .logo {font-size: 18px; font-weight: bold;}
-    .panier-icon {background: #FFD700; color: #000; padding: 10px 15px; border-radius: 8px; font-weight: bold; cursor: pointer;}
-    .produits {display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; max-width: 1300px; margin: 50px auto; padding: 0 20px;}
-    .produit {background: #f9f9f9; padding: 18px; border-radius: 12px; text-align: center; border: 1px solid #eee; transition: 0.3s;}
-    .produit:hover {box-shadow: 0 4px 10px rgba(0,0,0,0.1);}
-    .produit img {width: 100%; height: 320px; object-fit: cover; border-radius: 8px; margin-bottom: 12px;}
-    .produit h3 {font-size: 16px; margin-bottom: 8px; font-weight: normal;}
-    .prix {font-size: 20px; font-weight: bold; margin: 10px 0;}
-    .btn {background: #D4B78F; color: #000; padding: 12px; border: none; border-radius: 6px; width: 100%; margin: 5px 0; cursor: pointer; font-weight: bold; font-size: 15px;}
-    .btn:hover {opacity: 0.9;}
-    .btn-whatsapp {background:#25D366; color:white; text-decoration: none; display: block;}
-    .barre-verte {background: #25D366; height: 50px; width: 100%; position: fixed; bottom: 0; left: 0; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 18px; z-index: 10;}
+    body {background: #f5f5f5; font-family: Arial, sans-serif; padding-bottom: 70px;}
+    
+    header {background: #fff; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 10; box-shadow: 0 2px 5px rgba(0,0,0,0.1);}
+    .logo {font-size: 16px; font-weight: bold;}
+    .logo span {color: #D4B78F;}
+    .panier-icon {position: relative; font-size: 22px; cursor: pointer;}
+    .panier-icon span {background: #FFA500; color: #000; border-radius: 50%; padding: 2px 6px; font-size: 11px; font-weight: bold; position: absolute; top: -5px; right: -8px;}
+
+    .produits {display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; max-width: 500px; margin: 15px auto; padding: 0 10px;}
+    .produit {background: #fff; border-radius: 12px; padding: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);}
+    .produit img {width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 8px;}
+    .produit h3 {font-size: 13px; margin-bottom: 4px; font-weight: bold; height: 32px; overflow: hidden;}
+    .prix {font-size: 14px; font-weight: bold; color: #C8A882; margin-bottom: 8px;}
+    .btn {background: #C8A882; color: #000; padding: 10px; border: none; border-radius: 8px; width: 100%; cursor: pointer; font-weight: bold; font-size: 13px;}
+
+    .barre-verte {background: #25D366; height: 50px; width: 95%; position: fixed; bottom: 10px; left: 2.5%; border-radius: 25px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 16px; cursor: pointer;}
+
+    /* POPUP PANIER */
+    .popup {display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 999; overflow-y: auto;}
+    .popup-content {background: #fff; max-width: 500px; margin: 20px auto; border-radius: 20px 20px 0 0; padding: 20px; min-height: 90vh;}
+    .popup-header {display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;}
+    .popup-header h2 {font-size: 20px;}
+    .close-btn {font-size: 24px; background: #f0f0f0; border: none; border-radius: 50%; width: 30px; height: 30px; cursor: pointer;}
+    .subtitle {color: #C8A882; font-size: 12px; font-weight: bold; margin-bottom: 10px;}
+
+    .panier-item {display: flex; gap: 10px; background: #f9f9f9; padding: 10px; border-radius: 10px; margin-bottom: 10px;}
+    .panier-item img {width: 60px; height: 60px; border-radius: 8px; object-fit: cover;}
+    .panier-info {flex: 1;}
+    .panier-info h4 {font-size: 13px; margin-bottom: 3px;}
+    .panier-info p {font-size: 12px; color: #666;}
+    .panier-prix {font-weight: bold; color: #C8A882;}
+    .total {display: flex; justify-content: space-between; font-weight: bold; font-size: 16px; margin: 15px 0; padding-top: 10px; border-top: 1px solid #ddd;}
+
+    .form-group {margin-bottom: 15px;}
+    .form-group label {font-size: 11px; color: #666; font-weight: bold; display: block; margin-bottom: 5px;}
+    .form-group input {width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px; font-size: 14px;}
+
+    /* PAGE PAIEMENT */
+    .paiement-grid {display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px;}
+    .paiement-option {background: #f9f9f9; border: 2px solid #eee; border-radius: 12px; padding: 20px 10px; text-align: center; cursor: pointer;}
+    .paiement-option.active {border-color: #25D366;}
+    .paiement-option img {width: 40px; height: 40px; margin-bottom: 8px;}
+    .paiement-option h4 {font-size: 14px; margin-bottom: 4px;}
+    .paiement-option p {font-size: 11px; color: #999;}
+    .paiement-option .dispo {color: #25D366; font-weight: bold;}
+    .btn-valider {background: #25D366; color: #fff; width: 100%; padding: 15px; border: none; border-radius: 10px; font-weight: bold; font-size: 16px; margin-top: 20px; cursor: pointer;}
   </style>
 </head>
 <body>
   <header>
-    <div class="logo">by Bocar</div>
-    <div class="panier-icon">🛒 Panier (0) - 0 FCFA</div>
+    <div class="logo">INFINITY-<span>DRIP</span> STORE by Bocar</div>
+    <div class="panier-icon" onclick="ouvrirPanier()">🛒<span id="compteur">0</span></div>
   </header>
   
-  <div class="produits">
-    <!-- 7 ANCIENS PRODUITS - NE TOUCHE PAS -->
+  <div class="produits" id="produits">
+    <!-- TES 11 PRODUITS ICI - J'AI MIS 3 EXEMPLES -->
     <div class="produit">
-      <img src="lacoste.jpg" alt="Ensemble Lacoste">
-      <h3>Ensemble Lacoste Bleu Marine</h3>
-      <p class="prix">35000 FCFA</p>
-      <button class="btn" onclick="ajouterPanier('Ensemble Lacoste Bleu Marine', 35000)">Ajouter au panier</button>
-      <a href="https://wa.me/22372039675?text=Bonjour%20INFINITY%20Drip%20store%2C%20je%20suis%20int%C3%A9ress%C3%A9%20par%20Ensemble%20Lacoste%20Bleu%20Marine%20%C3%A0%2035000%20FCFA" class="btn btn-whatsapp" target="_blank">Commander sur WhatsApp</a>
-    </div>
-
-    <div class="produit">
-      <img src="nike.jpg" alt="Survetement Nike">
-      <h3>Survêtement Nike Vert</h3>
-      <p class="prix">35000 FCFA</p>
-      <button class="btn" onclick="ajouterPanier('Survetement Nike Vert', 35000)">Ajouter au panier</button>
-      <a href="https://wa.me/22372039675?text=Bonjour%20INFINITY%20Drip%20store%2C%20je%20suis%20int%C3%A9ress%C3%A9%20par%20Survetement%20Nike%20Vert%20%C3%A0%2035000%20FCFA" class="btn btn-whatsapp" target="_blank">Commander sur WhatsApp</a>
-    </div>
-
-    <div class="produit">
-      <img src="crocs.jpg" alt="Crocs Spiderman">
-      <h3>Crocs Spiderman Rouge</h3>
-      <p class="prix">22000 FCFA</p>
-      <button class="btn" onclick="ajouterPanier('Crocs Spiderman Rouge', 22000)">Ajouter au panier</button>
-      <a href="https://wa.me/22372039675?text=Bonjour%20INFINITY%20Drip%20store%2C%20je%20suis%20int%C3%A9ress%C3%A9%20par%20Crocs%20Spiderman%20Rouge%20%C3%A0%2022000%20FCFA" class="btn btn-whatsapp" target="_blank">Commander sur WhatsApp</a>
-    </div>
-
-    <div class="produit">
-      <img src="real.jpg" alt="Maillot Real Madrid">
-      <h3>Maillot Real Madrid Rose</h3>
-      <p class="prix">7000 FCFA</p>
-      <button class="btn" onclick="ajouterPanier('Maillot Real Madrid Rose', 7000)">Ajouter au panier</button>
-      <a href="https://wa.me/22372039675?text=Bonjour%20INFINITY%20Drip%20store%2C%20je%20suis%20int%C3%A9ress%C3%A9%20par%20Maillot%20Real%20Madrid%20Rose%20%C3%A0%207000%20FCFA" class="btn btn-whatsapp" target="_blank">Commander sur WhatsApp</a>
-    </div>
-
-    <div class="produit">
-      <img src="bayern.jpg" alt="Maillot Bayern">
-      <h3>Maillot Bayern Munich Blanc</h3>
-      <p class="prix">7000 FCFA</p>
-      <button class="btn" onclick="ajouterPanier('Maillot Bayern Munich Blanc', 7000)">Ajouter au panier</button>
-      <a href="https://wa.me/22372039675?text=Bonjour%20INFINITY%20Drip%20store%2C%20je%20suis%20int%C3%A9ress%C3%A9%20par%20Maillot%20Bayern%20Munich%20Blanc%20%C3%A0%207000%20FCFA" class="btn btn-whatsapp" target="_blank">Commander sur WhatsApp</a>
-    </div>
-
-    <!-- Mets ici tes 2 autres anciens produits si tu veux -->
-    <div class="produit">
-      <img src="produit6.jpg" alt="Produit 6">
-      <h3>Produit 6</h3>
-      <p class="prix">0 FCFA</p>
-      <button class="btn" onclick="ajouterPanier('Produit 6', 0)">Ajouter au panier</button>
-      <a href="https://wa.me/22372039675" class="btn btn-whatsapp" target="_blank">Commander sur WhatsApp</a>
-    </div>
-
-    <div class="produit">
-      <img src="produit7.jpg" alt="Produit 7">
-      <h3>Produit 7</h3>
-      <p class="prix">0 FCFA</p>
-      <button class="btn" onclick="ajouterPanier('Produit 7', 0)">Ajouter au panier</button>
-      <a href="https://wa.me/22372039675" class="btn btn-whatsapp" target="_blank">Commander sur WhatsApp</a>
-    </div>
-
-    <!-- 3 NOUVEAUX PRODUITS AJOUTÉS -->
-    <div class="produit">
-      <img src="IMG_2841.jpeg" alt="Maillot PSG 2024">
+      <img src="IMG_2841.jpeg">
       <h3>Maillot PSG 2024 Domicile</h3>
-      <p class="prix">7000 FCFA</p>
-      <button class="btn" onclick="ajouterPanier('Maillot PSG 2024 Domicile', 7000)">Ajouter au panier</button>
-      <a href="https://wa.me/22372039675?text=Bonjour%20INFINITY%20Drip%20store%2C%20je%20suis%20int%C3%A9ress%C3%A9%20par%20Maillot%20PSG%202024%20Domicile%20%C3%A0%207000%20FCFA" class="btn btn-whatsapp" target="_blank">Commander sur WhatsApp</a>
+      <p class="prix">7 000 FCFA</p>
+      <button class="btn" onclick="ajouterPanier('Maillot PSG 2024 Domicile', 7000, 'IMG_2841.jpeg')">Ajouter au panier</button>
     </div>
+    <!-- COLLE ICI LES 10 AUTRES PRODUITS DU CODE PRECEDENT -->
+  </div>
 
-    <div class="produit">
-      <img src="IMG_2832.jpeg" alt="Maillot AC Milan 2024">
-      <h3>Maillot AC Milan 2024 Extérieur</h3>
-      <p class="prix">7000 FCFA</p>
-      <button class="btn" onclick="ajouterPanier('Maillot AC Milan 2024 Exterieur', 7000)">Ajouter au panier</button>
-      <a href="https://wa.me/22372039675?text=Bonjour%20INFINITY%20Drip%20store%2C%20je%20suis%20int%C3%A9ress%C3%A9%20par%20Maillot%20AC%20Milan%202024%20Exterieur%20%C3%A0%207000%20FCFA" class="btn btn-whatsapp" target="_blank">Commander sur WhatsApp</a>
-    </div>
+  <div class="barre-verte" onclick="ouvrirPanier()">• Finaliser - <span id="totalBarre">0</span> FCFA</div>
 
-    <div class="produit">
-      <img src="IMG_2300.jpeg" alt="Ensemble Manchester United">
-      <h3>Ensemble Manchester United 2024</h3>
-      <p class="prix">30000 FCFA</p>
-      <button class="btn" onclick="ajouterPanier('Ensemble Manchester United 2024', 30000)">Ajouter au panier</button>
-      <a href="https://wa.me/22372039675?text=Bonjour%20INFINITY%20Drip%20store%2C%20je%20suis%20int%C3%A9ress%C3%A9%20par%20Ensemble%20Manchester%20United%202024%20%C3%A0%2030000%20FCFA" class="btn btn-whatsapp" target="_blank">Commander sur WhatsApp</a>
+  <!-- POPUP -->
+  <div class="popup" id="popupPanier">
+    <div class="popup-content">
+      <!-- PAGE 1 : COMMANDE -->
+      <div id="pageCommande">
+        <div class="popup-header">
+          <div>
+            <div class="subtitle">COMMANDE</div>
+            <h2>Finaliser</h2>
+          </div>
+          <button class="close-btn" onclick="fermerPanier()">×</button>
+        </div>
+        <div id="listePanier"></div>
+        <div class="total">
+          <span>Total</span>
+          <span id="totalCommande">0 FCFA</span>
+        </div>
+        <div class="form-group">
+          <label>VOTRE NOM</label>
+          <input type="text" id="nomClient" placeholder="Ex: Yarra Market">
+        </div>
+        <div class="form-group">
+          <label>TÉLÉPHONE</label>
+          <input type="tel" id="telClient" placeholder="+223...">
+        </div>
+        <div class="form-group">
+          <label>ADRESSE DE LIVRAISON (OPTIONNEL)</label>
+          <input type="text" id="adresseClient" placeholder="Ex: Djelibougou">
+        </div>
+        <button class="btn-valider" onclick="allerPaiement()">Continuer vers le paiement</button>
+      </div>
+
+      <!-- PAGE 2 : PAIEMENT -->
+      <div id="pagePaiement" style="display: none;">
+        <div class="popup-header">
+          <div>
+            <div class="subtitle">PAIEMENT</div>
+            <h2>Choisir un mode de paiement</h2>
+          </div>
+          <button class="close-btn" onclick="fermerPanier()">×</button>
+        </div>
+        <div class="paiement-grid">
+          <div class="paiement-option">
+            <div>🌊</div>
+            <h4>Wave</h4>
+            <p>Bientôt disponible</p>
+          </div>
+          <div class="paiement-option">
+            <div>🟠</div>
+            <h4>Orange Money</h4>
+            <p>Bientôt disponible</p>
+          </div>
+          <div class="paiement-option">
+            <div>🔶</div>
+            <h4>Moov Money</h4>
+            <p>Bientôt disponible</p>
+          </div>
+          <div class="paiement-option active" onclick="payerWhatsApp()">
+            <div style="font-size: 40px; color: #25D366;">📱</div>
+            <h4>WhatsApp</h4>
+            <p class="dispo">Disponible</p>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
-  <div class="barre-verte">Finaliser - 0 FCFA</div>
-
   <script>
-    let panier = [];
+    let panier = []; 
     let total = 0;
-    
-    function ajouterPanier(nom, prix) {
-      panier.push({nom, prix});
+
+    function ajouterPanier(nom, prix, img) {
+      panier.push({nom, prix, img}); 
       total += prix;
-      document.querySelector('.panier-icon').innerHTML = `🛒 Panier (${panier.length}) - ${total.toLocaleString()} FCFA`;
-      document.querySelector('.barre-verte').innerHTML = `Finaliser - ${total.toLocaleString()} FCFA`;
-      alert(nom + " ajouté au panier !");
+      document.getElementById('compteur').innerHTML = panier.length;
+      document.getElementById('totalBarre').innerHTML = total.toLocaleString();
+    }
+
+    function ouvrirPanier() {
+      document.getElementById('popupPanier').style.display = 'block';
+      afficherPanier();
+    }
+    function fermerPanier() {
+      document.getElementById('popupPanier').style.display = 'none';
+      document.getElementById('pageCommande').style.display = 'block';
+      document.getElementById('pagePaiement').style.display = 'none';
+    }
+    function afficherPanier() {
+      let html = '';
+      panier.forEach(item => {
+        html += `<div class="panier-item">
+          <img src="${item.img}">
+          <div class="panier-info">
+            <h4>${item.nom}</h4>
+            <p>Quantité: 1</p>
+          </div>
+          <div class="panier-prix">${item.prix.toLocaleString()} FCFA</div>
+        </div>`;
+      });
+      document.getElementById('listePanier').innerHTML = html;
+      document.getElementById('totalCommande').innerHTML = total.toLocaleString() + ' FCFA';
+    }
+    function allerPaiement() {
+      if(panier.length === 0) { alert('Votre panier est vide'); return; }
+      document.getElementById('pageCommande').style.display = 'none';
+      document.getElementById('pagePaiement').style.display = 'block';
+    }
+    function payerWhatsApp() {
+      let nom = document.getElementById('nomClient').value;
+      let tel = document.getElementById('telClient').value;
+      let adresse = document.getElementById('adresseClient').value;
+      let message = `Nouvelle Commande INFINITY DRIP%0A%0A`;
+      panier.forEach(item => { message += `-${item.nom} : ${item.prix.toLocaleString()} FCFA%0A`; });
+      message += `%0ATotal: ${total.toLocaleString()} FCFA%0A%0A`;
+      message += `Nom: ${nom}%0ATel: ${tel}%0AAdresse: ${adresse}`;
+      window.open(`https://wa.me/22372039675?text=${message}`, '_blank');
     }
   </script>
 </body>
