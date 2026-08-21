@@ -7,27 +7,14 @@
   <style>
     * {margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth;}
     body {font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif; background: #000;}
-    
-    /* HEADER BLANC ARRONDI COMME TA CAPTURE */
     header {background: #fff; margin: 12px; padding: 12px 18px; display: flex; justify-content: space-between; align-items: center; border-radius: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); position: sticky; top: 12px; z-index: 10;}
-    .logo {font-size: 13px; font-weight: 800; color: #000;}
-    .logo span {color: #C8A882;}
-    .icons {display: flex; gap: 18px; align-items: center;}
-    .panier-icon {position: relative; font-size: 20px; cursor: pointer;}
-    .panier-icon span {background: #FFA500; color: #000; border-radius: 50%; padding: 1px 5px; font-size: 10px; font-weight: bold; position: absolute; top: -6px; right: -8px;}
-    .menu-icon {font-size: 22px; cursor: pointer; font-weight: bold;}
-
-    /* SECTION HERO NOIRE */
+    .logo {font-size: 13px; font-weight: 800; color: #000;} .logo span {color: #C8A882;}
+    .panier-icon {position: relative; font-size: 20px; cursor: pointer;} .panier-icon span {background: #FFA500; color: #000; border-radius: 50%; padding: 1px 5px; font-size: 10px; font-weight: bold; position: absolute; top: -6px; right: -8px;}
     .hero {background: #000; color: #fff; padding: 40px 25px 100px; min-height: 75vh;}
     .hero h1 {font-size: 11px; color: #C8A882; margin-bottom: 20px; letter-spacing: 2px; font-weight: 700;}
-    .hero h2 {font-size: 32px; font-weight: 800; line-height: 1.2; margin-bottom: 15px;}
-    .hero h2 i {color: #C8A882; font-style: italic; font-weight: 400;}
+    .hero h2 {font-size: 32px; font-weight: 800; line-height: 1.2; margin-bottom: 15px;} .hero h2 i {color: #C8A882; font-style: italic; font-weight: 400;}
     .hero p {font-size: 14px; color: #aaa; margin-bottom: 35px; max-width: 300px; line-height: 1.5;}
-    
-    /* BOUTON DORÉ AVEC GLOW */
     .btn-hero {background: #C8A882; color: #000; padding: 16px 32px; border-radius: 30px; text-decoration: none; font-weight: 800; font-size: 15px; display: inline-block; box-shadow: 0 0 25px rgba(200,168,130,0.5);}
-
-    /* SECTION PRODUITS BLANCHE ARRONDI */
     .container {background: #f5f5f5; padding: 40px 0 100px; border-radius: 30px 30px 0 0; margin-top: -40px;}
     .container h2 {text-align: center; font-size: 20px; margin-bottom: 25px; color: #000; font-weight: 800;}
     .produits {display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; max-width: 500px; margin: 0 auto; padding: 0 12px;}
@@ -36,36 +23,26 @@
     .produit h3 {font-size: 13px; margin-bottom: 4px; font-weight: 700;}
     .prix {font-size: 14px; font-weight: 800; color: #C8A882; margin-bottom: 8px;}
     .btn {background: #C8A882; color: #000; padding: 10px; border: none; border-radius: 10px; width: 100%; cursor: pointer; font-weight: 800; font-size: 13px;}
-    
-    /* BARRE VERTE FLOTTANTE */
     .barre-verte {background: #25D366; height: 52px; width: 92%; position: fixed; bottom: 15px; left: 4%; border-radius: 16px; display: flex; align-items: center; justify-content: center; color: white; font-weight: 800; font-size: 16px; cursor: pointer; z-index: 999; box-shadow: 0 4px 20px rgba(37,211,102,0.4);}
-
-    /* POPUP */
     .popup {display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 9999; overflow-y: auto;}
     .popup-content {background: #fff; max-width: 500px; margin: 20px auto; border-radius: 25px; padding: 20px;}
     .popup-header {display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;}
-    .subtitle {color: #C8A882; font-size: 12px; font-weight: 800;}
-    .close-btn {font-size: 24px; background: #f0f0f0; border: none; border-radius: 50%; width: 32px; height: 32px; cursor: pointer; font-weight: bold;}
+    .subtitle {color: #C8A882; font-size: 12px; font-weight: 800;} .close-btn {font-size: 24px; background: #f0f0f0; border: none; border-radius: 50%; width: 32px; height: 32px; cursor: pointer; font-weight: bold;}
     .panier-item {display: flex; gap: 10px; background: #f9f9f9; padding: 10px; border-radius: 12px; margin-bottom: 10px;}
     .panier-item img {width: 60px; height: 60px; border-radius: 10px; object-fit: cover;}
     .total {display: flex; justify-content: space-between; font-weight: 800; font-size: 16px; margin: 15px 0; padding-top: 10px; border-top: 2px solid #eee;}
-    .form-group {margin-bottom: 15px;}
-    .form-group label {font-size: 11px; color: #666; font-weight: 800; display: block; margin-bottom: 5px;}
+    .form-group {margin-bottom: 15px;} .form-group label {font-size: 11px; color: #666; font-weight: 800; display: block; margin-bottom: 5px;}
     .form-group input {width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 10px;}
     .paiement-grid {display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px;}
     .paiement-option {background: #f9f9f9; border: 2px solid #eee; border-radius: 14px; padding: 20px 10px; text-align: center;}
-    .paiement-option.active {border-color: #25D366;}
-    .dispo {color: #25D366; font-weight: 800;}
+    .paiement-option.active {border-color: #25D366;} .dispo {color: #25D366; font-weight: 800;}
     .btn-valider {background: #25D366; color: #fff; width: 100%; padding: 16px; border: none; border-radius: 12px; font-weight: 800; font-size: 16px; margin-top: 20px; cursor: pointer;}
   </style>
 </head>
 <body>
   <header>
     <div class="logo">INFINITY-<span>DRIP</span> STORE by Bocar</div>
-    <div class="icons">
-      <div class="panier-icon">🛒<span id="compteur">0</span></div>
-      <div class="menu-icon" onclick="ouvrirPanier()">≡</div>
-    </div>
+    <div class="panier-icon" onclick="ouvrirPanier()">🛒<span id="compteur">0</span></div>
   </header>
   
   <div class="hero">
@@ -106,13 +83,18 @@
   </div>
 
   <script>
-    // ========== AJOUTE TES PRODUITS ICI ==========
+    // ================== ZONE PRODUITS - ORDRE CORRECT ==================
     const produits = [
       {nom: "Crocs Spiderman Rouge", prix: 22000, img: "985ae576-9e47-4cbb-a713-ebc1e695e5d8.jpeg"},
       {nom: "Maillot Real Madrid Rose", prix: 7000, img: "IMG_2842.jpeg"},
       {nom: "Maillot Bayern Munich Blanc", prix: 7000, img: "IMG_2833.jpeg"},
+      
+      // CORRIGÉ : LACOSTE VERT ICI AVEC LA BONNE PHOTO
       {nom: "Ensemble Lacoste Vert", prix: 35000, img: "5b3fc4c5-fb75-4c5c-8a87-0a61657b6a8a.jpeg"},
+      
+      // CORRIGÉ : VRAI ADIDAS ICI
       {nom: "Ensemble Adidas 3 Bandes", prix: 9000, img: "9493a5a7-b9ab-44b6-96d9-8e30a39b1a4b.jpeg"},
+      
       {nom: "Survetement Nike Vert", prix: 35000, img: "0cca44a9-5f8d-40da-a74b-0cd79ae5e17d.jpeg"},
       {nom: "Ensemble Lacoste Blanc", prix: 35000, img: "6b33879c-e552-4085-9066-f5d5770b523d.jpeg"},
       {nom: "Ensemble Lacoste Bleu Marine", prix: 35000, img: "3a531805-1412-4646-92b1-2d47d23ffcdb.jpeg"},
