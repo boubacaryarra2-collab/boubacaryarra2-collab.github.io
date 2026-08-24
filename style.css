@@ -1,0 +1,37 @@
+* {margin:0; padding:0; box-sizing:border-box; font-family:'Segoe UI', Arial, sans-serif;}
+body {background:#f5f5f5; padding-bottom:80px; color:#333;}
+header {background:white; padding:15px 20px; position:sticky; top:0; display:flex; justify-content:space-between; align-items:center; box-shadow:0 2px 10px rgba(0,0,0,0.1); z-index:100;}
+.logo {font-weight:bold; font-size:18px; letter-spacing:1px;} .logo span {color:#D4A76A;}
+.cart {font-size:24px; cursor:pointer; position:relative;}
+#cart-count {background:#D4A76A; color:white; border-radius:50%; padding:2px 7px; font-size:12px; position:absolute; top:-8px; right:-10px;}
+.container {padding:20px; max-width:1200px; margin:auto;}
+.container h2 {margin-bottom:20px; font-size:22px;}
+.grid-produits {display:grid; grid-template-columns:repeat(auto-fit, minmax(250px, 1fr)); gap:20px;}
+.card {background:white; border-radius:15px; padding:15px; box-shadow:0 3px 10px rgba(0,0,0,0.08); transition:0.3s;}
+.card:hover {transform:translateY(-5px);}
+.card img {width:100%; height:220px; object-fit:cover; border-radius:12px;}
+.card h3 {font-size:15px; margin:10px 0 5px; color:#333;}
+.prix {color:#D4A76A; font-weight:bold; font-size:16px; margin-bottom:10px;}
+.btn-ajout {width:100%; padding:12px; background:#D4A76A; color:white; border:none; border-radius:10px; font-weight:bold; cursor:pointer; transition:0.3s;}
+.btn-ajout:hover {background:#c49a5e;}
+.finaliser {position:fixed; bottom:15px; left:15px; right:15px; max-width:500px; margin:auto;}
+.finaliser button {width:100%; background:#25D366; color:white; padding:16px; border:none; border-radius:15px; font-weight:bold; font-size:17px; cursor:pointer; box-shadow:0 4px 15px rgba(37,211,102,0.3);}
+
+.popup {display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.7); z-index:999; backdrop-filter:blur(5px);}
+.popup-content {background:white; margin:3% auto; padding:25px; width:95%; max-width:500px; border-radius:20px; max-height:90vh; overflow-y:auto;}
+.close {float:right; font-size:30px; cursor:pointer; color:#999;}
+.popup h2 {margin-bottom:15px;}
+.popup label {font-size:12px; font-weight:bold; margin-top:12px; display:block; color:#555;}
+.popup input {width:100%; padding:12px; margin:5px 0 12px; border:1px solid #ddd; border-radius:10px; font-size:14px;}
+.item-panier {display:flex; align-items:center; gap:12px; padding:12px 0; border-bottom:1px solid #eee;}
+.item-panier img {width:60px; height:60px; border-radius:10px; object-fit:cover;}
+.item-panier .details {flex:1;} 
+.item-panier .details b {display:block; font-size:14px; margin-bottom:3px;}
+.item-panier .details span {font-size:13px; color:#666;}
+.item-panier .prix-item {color:#D4A76A; font-weight:bold; font-size:15px;}
+.total-panier {font-weight:bold; font-size:20px; text-align:right; margin:15px 0; color:#D4A76A;}
+.paiement {display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:10px;}
+.mode {border:2px solid #ddd; padding:15px; border-radius:12px; text-align:center; font-size:14px; transition:0.3s;}
+.mode.active {border:2px solid #25D366; color:#25D366; cursor:pointer; font-weight:bold; background:#f0fff5;}
+.mode.disabled {opacity:0.4; cursor:not-allowed;}
+.mode small {font-size:11px; color:#999;}
