@@ -9,15 +9,21 @@
 <body>
 
 <header>
-  <div class="logo">INFINITY-DRIP <span>STORE</span></div>
+  <div class="logo">INFINITY-<span>DRIP</span> STORE by Bocar</div>
   <div class="cart" onclick="ouvrirPanier()">🛒 <span id="cart-count">0</span></div>
 </header>
 
-<div class="container">
-  <h2>Nos Produits</h2>
+<section class="hero">
+  <p class="slogan">INFINITY DRIP STORE BY BOCAR</p>
+  <h1>Votre style<br><span>Drip,</span><br>Bamako → Monde.</h1>
+  <p>Prêt à porter, maillots et accessoires<br>livrés partout au Mali.</p>
+  <a href="#produits" class="btn-hero">Découvrir les produits</a>
+</section>
+
+<section id="produits" class="container">
+  <h2>NOS PRODUITS</h2>
   
   <div class="grid-produits">
-    <!-- 1. BAYERN -->
     <div class="card">
       <img src="https://via.placeholder.com/300x300/D4A76A/ffffff?text=Bayern" alt="Maillot Bayern">
       <div class="info">
@@ -27,7 +33,6 @@
       </div>
     </div>
 
-    <!-- 2. NIKE VERT -->
     <div class="card">
       <img src="https://via.placeholder.com/300x300/25D366/ffffff?text=Nike+Vert" alt="Survetement Nike Vert">
       <div class="info">
@@ -37,17 +42,15 @@
       </div>
     </div>
 
-    <!-- 3. LACOSTE BLANC -->
     <div class="card">
-      <img src="https://via.placeholder.com/300x300/eeeeee/333333?text=Lacoste+Blanc" alt="Ensemble Lacoste Blanc">
+      <img src="https://via.placeholder.com/300x300/eeeeee/333?text=Lacoste+Blanc" alt="Ensemble Lacoste Blanc">
       <div class="info">
         <h3>Ensemble Lacoste Blanc</h3>
         <p class="prix">35000 FCFA</p>
-        <button class="btn-ajout" onclick="ajouterPanier('Ensemble Lacoste Blanc', 35000, 'https://via.placeholder.com/300x300/eeeeee/333333?text=Lacoste+Blanc')">Ajouter au panier</button>
+        <button class="btn-ajout" onclick="ajouterPanier('Ensemble Lacoste Blanc', 35000, 'https://via.placeholder.com/300x300/eeeeee/333?text=Lacoste+Blanc')">Ajouter au panier</button>
       </div>
     </div>
 
-    <!-- 4. LACOSTE BLEU MARINE -->
     <div class="card">
       <img src="https://via.placeholder.com/300x300/1E3A8A/ffffff?text=Lacoste+Bleu" alt="Ensemble Lacoste Bleu Marine">
       <div class="info">
@@ -57,13 +60,12 @@
       </div>
     </div>
   </div>
-</div>
+</section>
 
 <div class="finaliser">
-  <button onclick="ouvrirPanier()">- Finaliser - <span id="total">0</span>FCFA</button>
+  <button onclick="ouvrirPanier()">• Finaliser - <span id="total">0</span> FCFA</button>
 </div>
 
-<!-- POPUP COMMANDE COMME CHINA-MALI -->
 <div id="popup" class="popup">
   <div class="popup-content">
     <span class="close" onclick="fermerPanier()">&times;</span>
